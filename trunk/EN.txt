@@ -1,0 +1,2 @@
+EN = 36
+REPORTE = 1
