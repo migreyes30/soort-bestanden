@@ -17,7 +17,7 @@ class Dialog1(wx.Dialog):
               style=wx.DEFAULT_DIALOG_STYLE, title='Error')
         self.SetClientSize(wx.Size(375, 121))
 
-        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'C:/ProyectoCognitiva/error.png',
+        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'error.png',
               wx.BITMAP_TYPE_PNG), id=wxID_DIALOG1STATICBITMAP1,
               name='staticBitmap1', parent=self, pos=wx.Point(8, 16),
               size=wx.Size(48, 48), style=0)
