@@ -37,7 +37,7 @@ class Dialog1(wx.Dialog):
         self.staticText2.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.BOLD,
               False, 'Tahoma'))
 
-        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'C:/ProyectoCognitiva/error.png',
+        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'error.png',
               wx.BITMAP_TYPE_PNG), id=wxID_DIALOG1STATICBITMAP1,
               name='staticBitmap1', parent=self, pos=wx.Point(16, 24),
               size=wx.Size(48, 48), style=0)
