@@ -11,9 +11,9 @@ def create(parent):
     return Frame2(parent)
 
 [wxID_FRAME2, wxID_FRAME2BOTONCONFIGURAR, wxID_FRAME2BOTONORDENAR, 
- wxID_FRAME2BOTONREGRESAR, wxID_FRAME2STATICTEXT1, wxID_FRAME2STATICTEXT2, 
- wxID_FRAME2STATICTEXT3, wxID_FRAME2STATICTEXT4, 
-] = [wx.NewId() for _init_ctrls in range(8)]
+ wxID_FRAME2BOTONREGRESAR, wxID_FRAME2STATICBITMAP1, wxID_FRAME2STATICTEXT1, 
+ wxID_FRAME2STATICTEXT2, wxID_FRAME2STATICTEXT3, wxID_FRAME2STATICTEXT4, 
+] = [wx.NewId() for _init_ctrls in range(9)]
 
 class Frame2(wx.Frame):
     def _init_ctrls(self, prnt):
@@ -22,31 +22,25 @@ class Frame2(wx.Frame):
               pos=wx.Point(400, 150), size=wx.Size(600, 450),
               style=wx.DEFAULT_FRAME_STYLE, title='Ordenador de archivos')
         self.SetClientSize(wx.Size(592, 416))
-        self.SetBackgroundColour(wx.Colour(214, 214, 214))
-
-        self.staticText1 = wx.StaticText(id=wxID_FRAME2STATICTEXT1,
-              label='Organizar los archivos', name='staticText1', parent=self,
-              pos=wx.Point(160, 32), size=wx.Size(261, 33), style=0)
-        self.staticText1.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.SetBackgroundColour(wx.Colour(225, 225, 225))
 
         self.staticText2 = wx.StaticText(id=wxID_FRAME2STATICTEXT2,
               label='has click en el boton de abajo para iniciar el ordenamiento.',
-              name='staticText2', parent=self, pos=wx.Point(40, 120),
+              name='staticText2', parent=self, pos=wx.Point(40, 112),
               size=wx.Size(497, 23), style=0)
         self.staticText2.SetFont(wx.Font(14, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
         self.staticText3 = wx.StaticText(id=wxID_FRAME2STATICTEXT3,
               label='Si has realizado la configuracion y todo esta bien,',
-              name='staticText3', parent=self, pos=wx.Point(80, 88),
+              name='staticText3', parent=self, pos=wx.Point(80, 80),
               size=wx.Size(415, 23), style=0)
         self.staticText3.SetFont(wx.Font(14, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
         self.botonOrdenar = wx.BitmapButton(bitmap=wx.Bitmap(u'ordenar.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2BOTONORDENAR,
-              name='botonOrdenar', parent=self, pos=wx.Point(152, 192),
+              name='botonOrdenar', parent=self, pos=wx.Point(152, 168),
               size=wx.Size(256, 80), style=wx.BU_AUTODRAW)
         self.botonOrdenar.Bind(wx.EVT_BUTTON, self.OnBotonOrdenarButton,
               id=wxID_FRAME2BOTONORDENAR)
@@ -71,6 +65,18 @@ class Frame2(wx.Frame):
               size=wx.Size(107, 74), style=wx.BU_AUTODRAW)
         self.botonConfigurar.Bind(wx.EVT_BUTTON, self.OnBotonConfigurarButton,
               id=wxID_FRAME2BOTONCONFIGURAR)
+
+        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'G:/ordenador-archivos/ordenarArchivos.png',
+              wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
+              name='staticBitmap1', parent=self, pos=wx.Point(120, 32),
+              size=wx.Size(356, 24), style=0)
+
+        self.staticText1 = wx.StaticText(id=wxID_FRAME2STATICTEXT1,
+              label='Nota : Esta acci\xf3n es irreversible.',
+              name='staticText1', parent=self, pos=wx.Point(152, 264),
+              size=wx.Size(272, 19), style=0)
+        self.staticText1.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.BOLD,
+              False, 'Tahoma'))
 
     def __init__(self, parent):
         self._init_ctrls(parent)

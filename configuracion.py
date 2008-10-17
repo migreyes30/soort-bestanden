@@ -25,10 +25,10 @@ def create(parent):
  wxID_FRAME2BOTONDESTINO, wxID_FRAME2BOTONENCABEZADO, 
  wxID_FRAME2BOTONEXPORTAR, wxID_FRAME2BOTONIMPORTAR, wxID_FRAME2BOTONINICIAL1, 
  wxID_FRAME2BOTONPALABRAS, wxID_FRAME2BOTONREGRESAR, 
- wxID_FRAME2BOTONREINICIAR, wxID_FRAME2CAJITA, wxID_FRAME2CONFIGURACION, 
- wxID_FRAME2ETIQUETAINFO, wxID_FRAME2ETIQUETAINFO2, wxID_FRAME2ETIQUETAINFO3, 
- wxID_FRAME2ETIQUETAINFO4, wxID_FRAME2ETIQUETAINFO5, wxID_FRAME2PANEL1, 
- wxID_FRAME2STATICBITMAP1, wxID_FRAME2STATICTEXT1, 
+ wxID_FRAME2BOTONREINICIAR, wxID_FRAME2CAJITA, wxID_FRAME2ETIQUETAINFO, 
+ wxID_FRAME2ETIQUETAINFO2, wxID_FRAME2ETIQUETAINFO3, wxID_FRAME2ETIQUETAINFO4, 
+ wxID_FRAME2ETIQUETAINFO5, wxID_FRAME2PANEL1, wxID_FRAME2STATICBITMAP1, 
+ wxID_FRAME2STATICBITMAP2, wxID_FRAME2STATICTEXT1, 
 ] = [wx.NewId() for _init_ctrls in range(21)]
 
 class Frame2(wx.Frame):
@@ -40,13 +40,6 @@ class Frame2(wx.Frame):
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(238, 238, 238))
         self.Bind(wx.EVT_CLOSE, self.OnFrame2Close)
-
-        self.Configuracion = wx.StaticText(id=wxID_FRAME2CONFIGURACION,
-              label='C o n f i g u r a c i \xf3 n', name='Configuracion',
-              parent=self, pos=wx.Point(232, 24), size=wx.Size(205, 23),
-              style=0)
-        self.Configuracion.SetFont(wx.Font(14, wx.SWISS, wx.NORMAL, wx.BOLD,
-              False, 'Tahoma'))
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'config.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
@@ -187,6 +180,11 @@ class Frame2(wx.Frame):
         self.botonEncabezado.Bind(wx.EVT_ENTER_WINDOW,
               self.OnBotonEncabezadoEnterWindow)
 
+        self.staticBitmap2 = wx.StaticBitmap(bitmap=wx.Bitmap(u'configuracion.png',
+              wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP2,
+              name='staticBitmap2', parent=self, pos=wx.Point(232, 18),
+              size=wx.Size(192, 31), style=0)
+
     def __init__(self, parent): # Inicia el constructor
         self._init_ctrls(parent)
 
@@ -300,7 +298,7 @@ class Frame2(wx.Frame):
         self.etiquetaInfo5.SetLabel("")
         self.etiquetaInfo.SetLabel("Aqui puedes leer alguna otra configuracion")
         self.etiquetaInfo2.SetLabel("que hayas realizado anteriormente.")
-        self.etiquetaInfo3.SetLabel("Por ejemplo : miconfiguracionAnterior.txt")
+        self.etiquetaInfo3.SetLabel("Por ejemplo : miconfiguracionAnterior")
 
     def OnBotonExportarEnterWindow(self, event):
         self.etiquetaInfo.SetLabel("")
@@ -311,8 +309,8 @@ class Frame2(wx.Frame):
         self.etiquetaInfo.SetLabel("Aqui puedes guardar la configuracion que acabas de ")
         self.etiquetaInfo2.SetLabel("realizar para que despues puedas volver a utilizarla.")
         self.etiquetaInfo3.SetLabel("Escribe el nombre en la caja de texto que ves de lado")
-        self.etiquetaInfo4.SetLabel("izquierdo. (Por ejemplo : miconfiguracion.txt)")
-        self.etiquetaInfo5.SetLabel("NOTA: Tiene que ser un archivo .txt")
+        self.etiquetaInfo4.SetLabel("izquierdo. (Por ejemplo : miconfiguracion)")
+        self.etiquetaInfo5.SetLabel("NOTA: Las configuraciones se guardaran como .txt")
  
 
 
@@ -346,7 +344,7 @@ class Frame2(wx.Frame):
         nombreArchivo= self.archivoExpo.GetValue()
         if nombreArchivo != "":
             rutaConfig = "configuraciones\\"
-            nombre = rutaConfig +  nombreArchivo
+            nombre = rutaConfig +  nombreArchivo + ".txt"
             shutil.copyfile("config.txt", nombre)
             ventanaAviso = completado.create(None)
             ventanaAviso.Show()
