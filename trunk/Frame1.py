@@ -52,7 +52,7 @@ class ventanita(wx.Frame):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_VENTANITA, name='ventanita',
               parent=prnt, pos=wx.Point(400, 150), size=wx.Size(600, 450),
-              style=wx.DEFAULT_FRAME_STYLE, title='Organizador de archivos')
+              style=wx.DEFAULT_FRAME_STYLE, title='QuickOrder')
         self._init_utils()
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(226, 226, 231))
@@ -62,6 +62,8 @@ class ventanita(wx.Frame):
         self.SetHelpText('')
         self.SetBackgroundStyle(wx.BG_STYLE_COLOUR)
         self.SetWindowVariant(wx.WINDOW_VARIANT_NORMAL)
+        self.SetIcon(wx.Icon(u'G:/ordenador-archivos/icon.ico',
+              wx.BITMAP_TYPE_ICO))
 
         self.botonSalir = wx.BitmapButton(bitmap=wx.Bitmap(u'salir.png',
               wx.BITMAP_TYPE_PNG), id=wxID_VENTANITABOTONSALIR,
