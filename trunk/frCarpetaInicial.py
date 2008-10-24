@@ -12,8 +12,8 @@ def create(parent):
     return Frame2(parent)
 
 [wxID_FRAME2, wxID_FRAME2BOTONDIRECTORIO, wxID_FRAME2BOTONGUARDAR, 
- wxID_FRAME2BOTONREGRESAR, wxID_FRAME2STATICBITMAP1, wxID_FRAME2STATICTEXT1, 
- wxID_FRAME2STATICTEXT2, wxID_FRAME2STATICTEXT3, wxID_FRAME2STATICTEXT4, 
+ wxID_FRAME2BOTONREGRESAR, wxID_FRAME2STATICBITMAP1, wxID_FRAME2STATICBITMAP2, 
+ wxID_FRAME2STATICTEXT1, wxID_FRAME2STATICTEXT2, wxID_FRAME2STATICTEXT3, 
  wxID_FRAME2STATICTEXT5, 
 ] = [wx.NewId() for _init_ctrls in range(10)]
 
@@ -23,18 +23,20 @@ class Frame2(wx.Frame):
         wx.Frame.__init__(self, id=wxID_FRAME2, name='', parent=prnt,
               pos=wx.Point(400, 150), size=wx.Size(600, 451),
               style=wx.DEFAULT_FRAME_STYLE,
-              title='Configura la carpeta inicial')
+              title='Configuraci\xf3n de la carpeta inicial')
         self.SetClientSize(wx.Size(592, 417))
         self.SetBackgroundColour(wx.Colour(235, 235, 235))
+        self.SetIcon(wx.Icon(u'G:/ordenador-archivos/icon.ico',
+              wx.BITMAP_TYPE_ICO))
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'config.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
-              name='staticBitmap1', parent=self, pos=wx.Point(128, 32),
+              name='staticBitmap1', parent=self, pos=wx.Point(136, 32),
               size=wx.Size(51, 47), style=0)
 
-        self.staticText1 = wx.StaticText(id=wxID_FRAME2STATICTEXT1,
-              label='Configuraci\xf3n :', name='staticText1', parent=self,
-              pos=wx.Point(192, 48), size=wx.Size(159, 29), style=0)
+        self.staticText1 = wx.StaticText(id=wxID_FRAME2STATICTEXT1, label='',
+              name='staticText1', parent=self, pos=wx.Point(192, 48),
+              size=wx.Size(0, 29), style=0)
         self.staticText1.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
@@ -50,12 +52,6 @@ class Frame2(wx.Frame):
               name='staticText3', parent=self, pos=wx.Point(80, 152),
               size=wx.Size(323, 19), style=0)
         self.staticText3.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
-
-        self.staticText4 = wx.StaticText(id=wxID_FRAME2STATICTEXT4,
-              label='Pantalla Inicial', name='staticText4', parent=self,
-              pos=wx.Point(368, 50), size=wx.Size(137, 25), style=0)
-        self.staticText4.SetFont(wx.Font(16, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
         self.botonRegresar = wx.BitmapButton(bitmap=wx.Bitmap(u'regresarMenuConfig.png',
@@ -86,6 +82,11 @@ class Frame2(wx.Frame):
               size=wx.Size(427, 19), style=0)
         self.staticText5.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
+
+        self.staticBitmap2 = wx.StaticBitmap(bitmap=wx.Bitmap(u'G:/ordenador-archivos/carpeInicial.png',
+              wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP2,
+              name='staticBitmap2', parent=self, pos=wx.Point(208, 48),
+              size=wx.Size(199, 30), style=0)
 
     def __init__(self, parent):
         self._init_ctrls(parent)
