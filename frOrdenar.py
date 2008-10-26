@@ -23,6 +23,8 @@ class Frame2(wx.Frame):
               style=wx.DEFAULT_FRAME_STYLE, title='Ordenador de archivos')
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(225, 225, 225))
+        self.SetIcon(wx.Icon(u'G:/ordenador-archivos/icon.ico',
+              wx.BITMAP_TYPE_ICO))
 
         self.staticText2 = wx.StaticText(id=wxID_FRAME2STATICTEXT2,
               label='has click en el boton de abajo para iniciar el ordenamiento.',
