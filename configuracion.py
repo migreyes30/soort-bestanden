@@ -345,11 +345,21 @@ class Frame2(wx.Frame):
     def OnBotonExportarButton(self, event):
         nombreArchivo= self.archivoExpo.GetValue()
         if nombreArchivo != "":
+	    nombre = ""
             rutaConfig = "configuraciones\\"
-            nombre = rutaConfig +  nombreArchivo + ".txt"
-            shutil.copyfile("config.txt", nombre)
-            ventanaAviso = completado.create(None)
-            ventanaAviso.Show()
+            if nombreArchivo.endswith(".txt"):
+                nombre = rutaConfig +  nombreArchivo
+		shutil.copyfile("config.txt", nombre)
+		ventanaAviso = completado.create(None)
+		ventanaAviso.Show()
+            elif "." in nombreArchivo:
+                ventanaError1 = error_escribir_nombre.create(None)
+                ventanaError1.Show()
+            else:
+		nombre = rutaConfig +  nombreArchivo + ".txt"
+	        shutil.copyfile("config.txt", nombre)
+		ventanaAviso = completado.create(None)
+		ventanaAviso.Show()
         else:
             ventanaError1 = error_escribir_nombre.create(None)
             ventanaError1.Show()
