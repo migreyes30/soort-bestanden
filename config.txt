@@ -1,3 +1,2 @@
-C:\Documents and Settings\Jgordon\Mis documentos
-C:\Documents and Settings\Jgordon\Mis documentos,C:\Documents and Settings\Jgordon,C:\Documents and Settings\Jgordon\Mis documentos,,,
-!!!!!!scf,qw,e,qw,qw,wq,wq,,wq,wq,wqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq,qw,qw,qw,qw,qw,qwq,wq,wq,qw,q,wq,wqw,,qw,qw,qw!!!!
+C:\Documents and Settings\Administrador\Mis documentos
+C:\Documents and Settings\Administrador\Mis documentos,C:\Documents and Settings\All Users\Documentos,C:\Documents and Settings\Administrador\Mis documentos,,,
