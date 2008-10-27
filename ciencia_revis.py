@@ -446,15 +446,16 @@ def moverACarpeta(archAnalizar):
 
 ## selecciona la carpeta a partir de diccionarios
 def seleccionarCarpeta(archAnalizar):#(lista_palabras)
-        #print archAnalizar, "este es el arch que analizara"
-        try:
+        print archAnalizar, "este es el arch que analizara"
+        global CARPETAS
+	try:
             lista = contarRepetidas(leerArchivoTxt(archAnalizar)).keys()
-        #print lista, "estas son las palabras que mas se repitieron"
+            #print lista, "estas son las palabras que mas se repitieron"
             CONT_CARPETAS = {}
 
             for m in CARPETAS:
                     CONT_CARPETAS[m] = 0
-                    
+            print CONT_CARPETAS, 'cont_carpetas'
             for a in CARPETAS:
                     for y in CARPETAS[a]:
                             CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista.count(y)
@@ -483,8 +484,9 @@ def hacer_la_magia():
         global REPORTE
         global carpetaInicio
         listaArchivos = obtenerArchivosCarpetaInicio()
-
+	print listaArchivos, 'listaarch'
         for x in listaArchivos:
+	    print x, 'archivo'
             if x != "" and x != None:
                # print x, "archivo en hacer la magia"
                 ponerTitulo(x)
@@ -562,13 +564,15 @@ def iniciarEN():
 
 def iniciarVariables():
     global carpetaInicio
+    global CARPETAS
+    global archEncabezado
     archivo = leerArchivoTxt("config.txt")
 
     carpetaInicio = archivo[0].strip()
     
      ### agregar if por si no hay configuracion..
     archivo[1] = archivo[1].split(',')
-    del archivo[1][0]
+
     #archivo
     archivo[2] = archivo[2].split('!!')
     
