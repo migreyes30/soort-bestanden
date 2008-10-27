@@ -3,26 +3,9 @@
 import wx
 import wx.html
 import Frame1
-
-page = """<html><body> 
-
-This silly example shows how custom tags can be defined and used in a wx.HtmlWindow. We've defined a new tag, &lt;blue&gt; that will change the <blue>foreground color</blue> of the portions of the document that it encloses to some shade of blue. The tag handler can also use parameters specified in the tag, for example: 
-
-<ul>
-
-<li> <blue shade='sky'>Sky Blue</blue>
-
-<li> <blue shade='midnight'>Midnight Blue</blue>
-
-<li> <blue shade='dark'>Dark Blue</blue>
-
-<li> <blue shade='navy'>Navy Blue</blue>
-
-</ul>
-
-</body></html>
-
-"""
+page = ""
+hola = open('ayuda.html','r')
+page = hola.read()
 
 def create(parent):
     return Frame2(parent)
@@ -50,16 +33,12 @@ class Frame2(wx.Frame):
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap('ayuda.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
-              name='staticBitmap1', parent=self, pos=wx.Point(168, 8),
+              name='staticBitmap1', parent=self, pos=wx.Point(168, 0),
               size=wx.Size(224, 64), style=0)
 
         self.pagina = wx.html.HtmlWindow(id=wxID_FRAME2PAGINA, name='pagina',
-              parent=self, pos=wx.Point(48, 80), size=wx.Size(480, 240),
+              parent=self, pos=wx.Point(40, 64), size=wx.Size(520, 256),
               style=wx.html.HW_SCROLLBAR_AUTO)
-        
-        html = wx.html.HtmlWindow(self)
-        html.SetStandardFonts()
-        html.SetPage(page)
 
     def __init__(self, parent):
         self._init_ctrls(parent)
