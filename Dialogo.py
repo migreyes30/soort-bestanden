@@ -3,6 +3,8 @@
 import wx
 import Frame1
 
+from Frame1 import *
+
 def create(parent):
     return Dialog1(parent)
 
@@ -45,6 +47,7 @@ class Dialog1(wx.Dialog):
         self._init_ctrls(parent)
         
     def OnButton1Button(self, event):
+        Frame1.matar(None)
         self.Destroy()
 
     def OnButton2Button(self, event):
