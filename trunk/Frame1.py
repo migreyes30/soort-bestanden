@@ -7,7 +7,12 @@ import frOrdenar
 import frAyuda
 
 def create(parent):
-    return ventanita(parent)
+    global ventanota 
+    ventanota = ventanita(parent)
+    return ventanota
+
+def matar(parent):
+    exit()
 
 [wxID_VENTANITA, wxID_VENTANITABOTONAYUDA, wxID_VENTANITABOTONCONFIGURAR, 
  wxID_VENTANITABOTONORDENAR, wxID_VENTANITABOTONSALIR, 
@@ -99,10 +104,8 @@ class ventanita(wx.Frame):
 
     def OnBotonSalirButton(self, event):
         ventanaSeguro = Dialogo.create(None)
-        ventanaSeguro.Show()
+        ventanaSeguro.Show()  
         
-    def desaparece():
-        self.Destroy()
 
     def OnBotonSalirLeftDclick(self, event):
         event.Skip()
