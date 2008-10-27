@@ -4,7 +4,7 @@ import wx
 import wx.html
 import Frame1
 page = ""
-hola = open('ayuda.html','r')
+hola = open(u'paginasAyuda/ayuda.html','r')
 page = hola.read()
 hola.close()
 def create(parent):
@@ -33,14 +33,13 @@ class Frame2(wx.Frame):
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap('ayuda.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
-              name='staticBitmap1', parent=self, pos=wx.Point(168, 8),
-              size=wx.Size(224, 64), style=0)
+              name='staticBitmap1', parent=self, pos=wx.Point(110, 8),
+              size=wx.Size(352, 64), style=0)
 
         self.pagina = wx.html.HtmlWindow(id=wxID_FRAME2PAGINA, name='pagina',
-              parent=self, pos=wx.Point(48, 80), size=wx.Size(480, 240),
+              parent=self, pos=wx.Point(48, 72), size=wx.Size(500, 260),
               style=wx.html.HW_SCROLLBAR_AUTO)
-        
-        
+            
         self.pagina.SetPage(page)
 
     def __init__(self, parent):
