@@ -18,7 +18,6 @@ def create(parent):
 ] = [wx.NewId() for _init_ctrls in range(21)]
 
 class Frame2(wx.Frame):
-
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME2, name='', parent=prnt,
@@ -47,71 +46,63 @@ class Frame2(wx.Frame):
         self.staticText2.SetFont(wx.Font(16, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
+        self.etiquetaDir3 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR3, label='',
+              name='etiquetaDir3', parent=self, pos=wx.Point(50, 208),
+              size=wx.Size(0, 13), style=0)
+        self.etiquetaDir3.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
+              False, 'Tahoma'))
+
         self.staticBox1 = wx.StaticBox(id=wxID_FRAME2STATICBOX1,
               label='Palabras Clave :', name='staticBox1', parent=self,
               pos=wx.Point(28, 112), size=wx.Size(536, 240), style=0)
         self.staticBox1.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.staticBox1.Center(wx.HORIZONTAL)
 
-#-------------------------------------------------------------------------------
-#direcciones
+        self.etiquetaDir2 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR2, label='',
+              name='etiquetaDir2', parent=self, pos=wx.Point(50, 176),
+              size=wx.Size(0, 13), style=0)
+        self.etiquetaDir2.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
+              False, 'Tahoma'))
 
-	self.etiquetaDir1 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR1, label='',name='etiquetaDir1', parent=self, pos=wx.Point(50, 144),size=wx.Size(0, 13), style=0)
-	self.etiquetaDir1.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
-	#self.etiquetaDir4.Enable(True)
-	
-        self.etiquetaDir2 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR2, label='',name='etiquetaDir2', parent=self, pos=wx.Point(50, 176),size=wx.Size(0, 13), style=0)
-        self.etiquetaDir2.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
-	#self.etiquetaDir2.Enable(True)
+        self.etiquetaDir4 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR4, label='',
+              name='etiquetaDir4', parent=self, pos=wx.Point(50, 240),
+              size=wx.Size(0, 13), style=0)
+        self.etiquetaDir4.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
+              False, 'Tahoma'))
 
-        self.etiquetaDir3 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR3, label='',name='etiquetaDir3', parent=self, pos=wx.Point(50, 208),size=wx.Size(0, 13), style=0)
-        self.etiquetaDir3.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
-	#self.etiquetaDir3.Enable(True)
+        self.etiquetaDir5 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR5, label='',
+              name='etiquetaDir5', parent=self, pos=wx.Point(50, 272),
+              size=wx.Size(0, 13), style=0)
+        self.etiquetaDir5.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
+              False, 'Tahoma'))
+        self.etiquetaDir5.Enable(True)
 
-        self.etiquetaDir4 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR4, label='',name='etiquetaDir4', parent=self, pos=wx.Point(50, 240),size=wx.Size(0, 13), style=0)
-        self.etiquetaDir4.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
-	#self.etiquetaDir4.Enable(True)
+        self.etiquetaDir6 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR6, label='',
+              name='etiquetaDir6', parent=self, pos=wx.Point(50, 304),
+              size=wx.Size(0, 13), style=0)
+        self.etiquetaDir6.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
+              False, 'Tahoma'))
 
-        self.etiquetaDir5 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR5, label='',name='etiquetaDir5', parent=self, pos=wx.Point(50, 272),size=wx.Size(0, 13), style=0)
-        self.etiquetaDir5.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
-        #self.etiquetaDir5.Enable(True)
+        self.etiquetaDir1 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR1, label='',
+              name='etiquetaDir1', parent=self, pos=wx.Point(50, 144),
+              size=wx.Size(0, 13), style=0)
+        self.etiquetaDir1.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
+              False, 'Tahoma'))
 
-        self.etiquetaDir6 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR6, label='',name='etiquetaDir6', parent=self, pos=wx.Point(50, 304),size=wx.Size(0, 13), style=0)
-        self.etiquetaDir6.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
-	#self.etiquetaDir6.Enable(True)
+        self.dir3 = wx.TextCtrl(id=wxID_FRAME2DIR3, name='dir3', parent=self,
+              pos=wx.Point(392, 208), size=wx.Size(160, 21), style=0, value='')
 
+        self.dir4 = wx.TextCtrl(id=wxID_FRAME2DIR4, name='dir4', parent=self,
+              pos=wx.Point(392, 240), size=wx.Size(160, 21), style=0, value='')
 
-#-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
-#leer archivo
-	fileDir=open('config.txt','r')
-	dirDest=fileDir.read()
-	fileDir.close()
-	direcciones = dirDest.split("\n")
-	listaDir=direcciones[1].split(",")
-	noEmptyElements = 0
-	for i in xrange(len(listaDir)):
-		if listaDir[i] != '':
-			noEmptyElements=noEmptyElements+1
+        self.dir5 = wx.TextCtrl(id=wxID_FRAME2DIR5, name='dir5', parent=self,
+              pos=wx.Point(392, 272), size=wx.Size(160, 21), style=0, value='')
 
-#-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
-#texto palabras
+        self.dir6 = wx.TextCtrl(id=wxID_FRAME2DIR6, name='dir6', parent=self,
+              pos=wx.Point(392, 304), size=wx.Size(160, 21), style=0, value='')
 
-	if noEmptyElements >= 1:
-		self.dir1 = wx.TextCtrl(id=wxID_FRAME2DIR1, name='dir1', parent=self,pos=wx.Point(392, 144), size=wx.Size(160, 21), style=0, value='')
-	if noEmptyElements >= 2:
-		self.dir2 = wx.TextCtrl(id=wxID_FRAME2DIR2, name='dir2', parent=self,pos=wx.Point(392, 176), size=wx.Size(160, 21), style=0, value='')
-	if noEmptyElements >= 3:
-		self.dir3 = wx.TextCtrl(id=wxID_FRAME2DIR3, name='dir3', parent=self, pos=wx.Point(392, 208), size=wx.Size(160, 21), style=0, value='')
-	if noEmptyElements >= 4:
-		self.dir4 = wx.TextCtrl(id=wxID_FRAME2DIR4, name='dir4', parent=self,pos=wx.Point(392, 240), size=wx.Size(160, 21), style=0, value='')
-	if noEmptyElements >= 5:
-		self.dir5 = wx.TextCtrl(id=wxID_FRAME2DIR5, name='dir5', parent=self,pos=wx.Point(392, 272), size=wx.Size(160, 21), style=0, value='')
-	if noEmptyElements == 6:
-		self.dir6 = wx.TextCtrl(id=wxID_FRAME2DIR6, name='dir6', parent=self,pos=wx.Point(392, 304), size=wx.Size(160, 21), style=0, value='')
-
-#-------------------------------------------------------------------------------
+        self.dir2 = wx.TextCtrl(id=wxID_FRAME2DIR2, name='dir2', parent=self,
+              pos=wx.Point(392, 176), size=wx.Size(160, 21), style=0, value='')
 
         self.staticText3 = wx.StaticText(id=wxID_FRAME2STATICTEXT3,
               label='para cada uno de los directorios que escogiste.',
@@ -140,6 +131,9 @@ class Frame2(wx.Frame):
               size=wx.Size(339, 19), style=0)
         self.staticText4.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
+
+        self.dir1 = wx.TextCtrl(id=wxID_FRAME2DIR1, name='dir1', parent=self,
+              pos=wx.Point(392, 144), size=wx.Size(160, 21), style=0, value='')
 
     def __init__(self, parent):
         self._init_ctrls(parent)
@@ -181,21 +175,24 @@ class Frame2(wx.Frame):
             listaDir5 = []
             listaDir6 = []
     #--------- Aqui obtenemos las palabras clave que el usuario ingresa. ---------
-            palabras1 = self.dir1.GetValue()
-            palabras2 = self.dir2.GetValue()
-            palabras3 = self.dir3.GetValue()
-            palabras4 = self.dir4.GetValue()
-            palabras5 = self.dir5.GetValue()
-            palabras6 = self.dir6.GetValue()
+            try:
+                palabras1 = self.dir1.GetValue()
+                palabras2 = self.dir2.GetValue()
+                palabras3 = self.dir3.GetValue()
+                palabras4 = self.dir4.GetValue()
+                palabras5 = self.dir5.GetValue()
+                palabras6 = self.dir6.GetValue()
             
-            listaDir1 = palabras1[0:len(palabras1)].split(',')
-            listaDir2 = palabras2[0:len(palabras2)].split(',')
-            listaDir3 = palabras3[0:len(palabras3)].split(',')
-            listaDir4 = palabras4[0:len(palabras4)].split(',')
-            listaDir5 = palabras5[0:len(palabras5)].split(',')
-            listaDir6 = palabras6[0:len(palabras6)].split(',')
+            
+                listaDir1 = palabras1[0:len(palabras1)].split(',')
+                listaDir2 = palabras2[0:len(palabras2)].split(',')
+                listaDir3 = palabras3[0:len(palabras3)].split(',')
+                listaDir4 = palabras4[0:len(palabras4)].split(',')
+                listaDir5 = palabras5[0:len(palabras5)].split(',')
+                listaDir6 = palabras6[0:len(palabras6)].split(',')
     #----------- Las palabras de cada carpeta son separadas por !! ---------       
-            palabras = ','.join(listaDir1) + "!!" + ','.join(listaDir2) + "!!" + ','.join(listaDir3) + "!!" + ','.join(listaDir4) + "!!" +','.join(listaDir5) + "!!" + ','.join(listaDir6) + "\n"
+                palabras = ','.join(listaDir1) + "!!" + ','.join(listaDir2) + "!!" + ','.join(listaDir3) + "!!" + ','.join(listaDir4) + "!!" +','.join(listaDir5) + "!!" + ','.join(listaDir6) + "\n"
+            except: pass
             output = file("config.txt", "a")
             output.write("")
             output.write(palabras)
