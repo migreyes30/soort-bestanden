@@ -12,12 +12,12 @@ def create(parent):
     return Frame2(parent)
 
 [wxID_FRAME2, wxID_FRAME2BOTONGUARDAR, wxID_FRAME2BOTONREGRESAR, 
- wxID_FRAME2DIRBROWSEBUTTON1, wxID_FRAME2DIRBROWSEBUTTON2, 
+ wxID_FRAME2BUTTON1, wxID_FRAME2DIRBROWSEBUTTON1, wxID_FRAME2DIRBROWSEBUTTON2, 
  wxID_FRAME2DIRBROWSEBUTTON3, wxID_FRAME2DIRBROWSEBUTTON4, 
  wxID_FRAME2DIRBROWSEBUTTON5, wxID_FRAME2DIRBROWSEBUTTON6, 
  wxID_FRAME2GENSTATICTEXT1, wxID_FRAME2GENSTATICTEXT2, 
  wxID_FRAME2STATICBITMAP1, wxID_FRAME2STATICTEXT1, wxID_FRAME2STATICTEXT2, 
-] = [wx.NewId() for _init_ctrls in range(14)]
+] = [wx.NewId() for _init_ctrls in range(15)]
 
 class Frame2(wx.Frame):
     def _init_ctrls(self, prnt):
@@ -50,7 +50,7 @@ class Frame2(wx.Frame):
         self.dirBrowseButton1 = wx.lib.filebrowsebutton.DirBrowseButton(buttonText='Examinar',
               dialogTitle='', id=wxID_FRAME2DIRBROWSEBUTTON1,
               labelText='Directorio 1 :', newDirectory=False, parent=self,
-              pos=wx.Point(16, 128), size=wx.Size(264, 48), startDirectory='.',
+              pos=wx.Point(16, 120), size=wx.Size(264, 48), startDirectory='.',
               style=wx.TAB_TRAVERSAL,
               toolTip='Type directory name or browse to select')
         self.dirBrowseButton1.SetBackgroundColour(wx.Colour(235, 235, 235))
@@ -58,42 +58,47 @@ class Frame2(wx.Frame):
         self.dirBrowseButton2 = wx.lib.filebrowsebutton.DirBrowseButton(buttonText='Examinar',
               dialogTitle='', id=wxID_FRAME2DIRBROWSEBUTTON2,
               labelText='Directorio 2 :', newDirectory=False, parent=self,
-              pos=wx.Point(16, 192), size=wx.Size(264, 48), startDirectory='.',
+              pos=wx.Point(16, 176), size=wx.Size(264, 48), startDirectory='.',
               style=wx.TAB_TRAVERSAL,
               toolTip='Type directory name or browse to select')
         self.dirBrowseButton2.SetBackgroundColour(wx.Colour(240, 240, 240))
+        self.dirBrowseButton2.Show(False)
 
         self.dirBrowseButton3 = wx.lib.filebrowsebutton.DirBrowseButton(buttonText='Examinar',
               dialogTitle='', id=wxID_FRAME2DIRBROWSEBUTTON3,
               labelText='Directorio 3 :', newDirectory=False, parent=self,
-              pos=wx.Point(16, 256), size=wx.Size(264, 48), startDirectory='.',
+              pos=wx.Point(16, 232), size=wx.Size(264, 48), startDirectory='.',
               style=wx.TAB_TRAVERSAL,
               toolTip='Type directory name or browse to select')
         self.dirBrowseButton3.SetBackgroundColour(wx.Colour(234, 234, 234))
+        self.dirBrowseButton3.Show(False)
 
         self.dirBrowseButton4 = wx.lib.filebrowsebutton.DirBrowseButton(buttonText='Examinar',
               dialogTitle='', id=wxID_FRAME2DIRBROWSEBUTTON4,
               labelText='Directorio 4 :', newDirectory=False, parent=self,
-              pos=wx.Point(304, 128), size=wx.Size(264, 48), startDirectory='.',
+              pos=wx.Point(304, 120), size=wx.Size(264, 48), startDirectory='.',
               style=wx.TAB_TRAVERSAL,
               toolTip='Type directory name or browse to select')
         self.dirBrowseButton4.SetBackgroundColour(wx.Colour(230, 230, 230))
+        self.dirBrowseButton4.Show(False)
 
         self.dirBrowseButton5 = wx.lib.filebrowsebutton.DirBrowseButton(buttonText='Examinar',
               dialogTitle='', id=wxID_FRAME2DIRBROWSEBUTTON5,
               labelText='Directorio 5:', newDirectory=False, parent=self,
-              pos=wx.Point(304, 192), size=wx.Size(264, 48), startDirectory='.',
+              pos=wx.Point(304, 176), size=wx.Size(264, 48), startDirectory='.',
               style=wx.TAB_TRAVERSAL,
               toolTip='Type directory name or browse to select')
         self.dirBrowseButton5.SetBackgroundColour(wx.Colour(234, 234, 234))
+        self.dirBrowseButton5.Show(False)
 
         self.dirBrowseButton6 = wx.lib.filebrowsebutton.DirBrowseButton(buttonText='Examinar',
               dialogTitle='', id=wxID_FRAME2DIRBROWSEBUTTON6,
               labelText='Directorio 6 :', newDirectory=False, parent=self,
-              pos=wx.Point(304, 256), size=wx.Size(264, 48), startDirectory='.',
+              pos=wx.Point(304, 232), size=wx.Size(264, 48), startDirectory='.',
               style=wx.TAB_TRAVERSAL,
               toolTip='Type directory name or browse to select')
         self.dirBrowseButton6.SetBackgroundColour(wx.Colour(233, 233, 233))
+        self.dirBrowseButton6.Show(False)
 
         self.genStaticText1 = wx.lib.stattext.GenStaticText(ID=wxID_FRAME2GENSTATICTEXT1,
               label='desees que se ordenen los archivos. Puedes escoger hasta 6 directorios diferentes.',
@@ -126,6 +131,12 @@ class Frame2(wx.Frame):
         self.genStaticText2.SetFont(wx.Font(11, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
         self.genStaticText2.SetBackgroundColour(wx.Colour(238, 238, 238))
+
+        self.button1 = wx.Button(id=wxID_FRAME2BUTTON1, label='button1',
+              name='button1', parent=self, pos=wx.Point(256, 368),
+              size=wx.Size(75, 23), style=0)
+        self.button1.Bind(wx.EVT_BUTTON, self.OnButton1Button,
+              id=wxID_FRAME2BUTTON1)
 
     def __init__(self, parent):
         self._init_ctrls(parent)
@@ -164,3 +175,5 @@ class Frame2(wx.Frame):
         borrar.write("")
         borrar.close()
 
+    def OnButton1Button(self, event):
+        self.dirBrowseButton5.Show(True)

@@ -12,6 +12,9 @@ def create(parent):
     return ventanota
 
 def matar(parent):
+    borrar = file("config.txt", "w")
+    borrar.write("")
+    borrar.close()
     exit()
 
 [wxID_VENTANITA, wxID_VENTANITABOTONAYUDA, wxID_VENTANITABOTONCONFIGURAR, 
