@@ -1,14 +1,35 @@
 #Boa:Frame:Frame2
 
 import wx
+import wx.html
 import Frame1
+
+page = """<html><body> 
+
+This silly example shows how custom tags can be defined and used in a wx.HtmlWindow. We've defined a new tag, &lt;blue&gt; that will change the <blue>foreground color</blue> of the portions of the document that it encloses to some shade of blue. The tag handler can also use parameters specified in the tag, for example: 
+
+<ul>
+
+<li> <blue shade='sky'>Sky Blue</blue>
+
+<li> <blue shade='midnight'>Midnight Blue</blue>
+
+<li> <blue shade='dark'>Dark Blue</blue>
+
+<li> <blue shade='navy'>Navy Blue</blue>
+
+</ul>
+
+</body></html>
+
+"""
 
 def create(parent):
     return Frame2(parent)
 
-[wxID_FRAME2, wxID_FRAME2BITMAPBUTTON1, wxID_FRAME2STATICBITMAP1, 
- wxID_FRAME2STATICTEXT1, wxID_FRAME2STATICTEXT2, wxID_FRAME2STATICTEXT3, 
-] = [wx.NewId() for _init_ctrls in range(6)]
+[wxID_FRAME2, wxID_FRAME2BITMAPBUTTON1, wxID_FRAME2PAGINA, 
+ wxID_FRAME2STATICBITMAP1, 
+] = [wx.NewId() for _init_ctrls in range(4)]
 
 class Frame2(wx.Frame):
     def _init_ctrls(self, prnt):
@@ -18,15 +39,7 @@ class Frame2(wx.Frame):
               style=wx.DEFAULT_FRAME_STYLE, title='Ayuda')
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(224, 224, 224))
-        self.SetIcon(wx.Icon(u'icon.ico',
-              wx.BITMAP_TYPE_ICO))
-
-        self.staticText1 = wx.StaticText(id=wxID_FRAME2STATICTEXT1,
-              label=' que tengas del uso del programa.', name='staticText1',
-              parent=self, pos=wx.Point(120, 184), size=wx.Size(324, 25),
-              style=0)
-        self.staticText1.SetFont(wx.Font(16, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.SetIcon(wx.Icon(u'icon.ico',wx.BITMAP_TYPE_ICO))
 
         self.bitmapButton1 = wx.BitmapButton(bitmap=wx.Bitmap(u'regresar.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2BITMAPBUTTON1,
@@ -35,24 +48,18 @@ class Frame2(wx.Frame):
         self.bitmapButton1.Bind(wx.EVT_BUTTON, self.OnBitmapButton1Button,
               id=wxID_FRAME2BITMAPBUTTON1)
 
-        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'imagen3.png',
+        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap('ayuda.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
-              name='staticBitmap1', parent=self, pos=wx.Point(192, 24),
-              size=wx.Size(200, 60), style=0)
+              name='staticBitmap1', parent=self, pos=wx.Point(168, 8),
+              size=wx.Size(224, 64), style=0)
 
-        self.staticText2 = wx.StaticText(id=wxID_FRAME2STATICTEXT2,
-              label='En la carpeta del programa podras encontrar un archivo de',
-              name='staticText2', parent=self, pos=wx.Point(24, 120),
-              size=wx.Size(559, 25), style=0)
-        self.staticText2.SetFont(wx.Font(16, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
-
-        self.staticText3 = wx.StaticText(id=wxID_FRAME2STATICTEXT3,
-              label='ayuda en donde podras consultar las dudas',
-              name='staticText3', parent=self, pos=wx.Point(96, 152),
-              size=wx.Size(408, 25), style=0)
-        self.staticText3.SetFont(wx.Font(16, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.pagina = wx.html.HtmlWindow(id=wxID_FRAME2PAGINA, name='pagina',
+              parent=self, pos=wx.Point(48, 80), size=wx.Size(480, 240),
+              style=wx.html.HW_SCROLLBAR_AUTO)
+        
+        html = wx.html.HtmlWindow(self)
+        html.SetStandardFonts()
+        html.SetPage(page)
 
     def __init__(self, parent):
         self._init_ctrls(parent)
