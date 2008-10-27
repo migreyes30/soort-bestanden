@@ -7,6 +7,10 @@ import configuracion
 import string
 import guardaste
 import error
+global contador
+contador = 1
+
+
 
 def create(parent):
     return Frame2(parent)
@@ -174,6 +178,10 @@ class Frame2(wx.Frame):
         borrar = file("config.txt", "w")
         borrar.write("")
         borrar.close()
-
+        
     def OnButton1Button(self, event):
+        #contador ++
         self.dirBrowseButton5.Show(True)
+        self.dirBrowseButton2.Show(True)
+        self.dirBrowseButton3.Show(True)
+        self.dirBrowseButton4.Show(True)
