@@ -39,7 +39,7 @@ class Frame2(wx.Frame):
               style=wx.DEFAULT_FRAME_STYLE, title='Configuraci\xf3n')
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(238, 238, 238))
-        self.SetIcon(wx.Icon(u'G:/ordenador-archivos/icon.ico',
+        self.SetIcon(wx.Icon(u'icon.ico',
               wx.BITMAP_TYPE_ICO))
         self.Bind(wx.EVT_CLOSE, self.OnFrame2Close)
 

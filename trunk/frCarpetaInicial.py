@@ -26,7 +26,7 @@ class Frame2(wx.Frame):
               title='Configuraci\xf3n de la carpeta inicial')
         self.SetClientSize(wx.Size(592, 417))
         self.SetBackgroundColour(wx.Colour(235, 235, 235))
-        self.SetIcon(wx.Icon(u'G:/ordenador-archivos/icon.ico',
+        self.SetIcon(wx.Icon(u'icon.ico',
               wx.BITMAP_TYPE_ICO))
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'config.png',
@@ -83,7 +83,7 @@ class Frame2(wx.Frame):
         self.staticText5.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
-        self.staticBitmap2 = wx.StaticBitmap(bitmap=wx.Bitmap(u'G:/ordenador-archivos/carpeInicial.png',
+        self.staticBitmap2 = wx.StaticBitmap(bitmap=wx.Bitmap(u'carpeInicial.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP2,
               name='staticBitmap2', parent=self, pos=wx.Point(208, 48),
               size=wx.Size(199, 30), style=0)

@@ -18,6 +18,8 @@ class Frame2(wx.Frame):
               style=wx.DEFAULT_FRAME_STYLE, title='Ayuda')
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(224, 224, 224))
+        self.SetIcon(wx.Icon(u'icon.ico',
+              wx.BITMAP_TYPE_ICO))
 
         self.staticText1 = wx.StaticText(id=wxID_FRAME2STATICTEXT1,
               label=' que tengas del uso del programa.', name='staticText1',

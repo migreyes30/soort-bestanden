@@ -62,7 +62,7 @@ class ventanita(wx.Frame):
         self.SetHelpText('')
         self.SetBackgroundStyle(wx.BG_STYLE_COLOUR)
         self.SetWindowVariant(wx.WINDOW_VARIANT_NORMAL)
-        self.SetIcon(wx.Icon(u'G:/ordenador-archivos/icon.ico',
+        self.SetIcon(wx.Icon(u'icon.ico',
               wx.BITMAP_TYPE_ICO))
 
         self.botonSalir = wx.BitmapButton(bitmap=wx.Bitmap(u'salir.png',
