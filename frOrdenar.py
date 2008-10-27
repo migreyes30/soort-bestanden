@@ -23,7 +23,7 @@ class Frame2(wx.Frame):
               style=wx.DEFAULT_FRAME_STYLE, title='Ordenador de archivos')
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(225, 225, 225))
-        self.SetIcon(wx.Icon(u'G:/ordenador-archivos/icon.ico',
+        self.SetIcon(wx.Icon(u'icon.ico',
               wx.BITMAP_TYPE_ICO))
 
         self.staticText2 = wx.StaticText(id=wxID_FRAME2STATICTEXT2,
@@ -68,7 +68,7 @@ class Frame2(wx.Frame):
         self.botonConfigurar.Bind(wx.EVT_BUTTON, self.OnBotonConfigurarButton,
               id=wxID_FRAME2BOTONCONFIGURAR)
 
-        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'G:/ordenador-archivos/ordenarArchivos.png',
+        self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'ordenarArchivos.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
               name='staticBitmap1', parent=self, pos=wx.Point(120, 32),
               size=wx.Size(356, 24), style=0)

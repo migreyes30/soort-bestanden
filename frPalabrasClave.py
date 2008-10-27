@@ -25,6 +25,8 @@ class Frame2(wx.Frame):
               style=wx.DEFAULT_FRAME_STYLE, title='Palabras clave')
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(255, 255, 255))
+        self.SetIcon(wx.Icon(u'icon.ico',
+              wx.BITMAP_TYPE_ICO))
         self.Bind(wx.EVT_ACTIVATE, self.OnFrame2Activate)
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'config.png',
