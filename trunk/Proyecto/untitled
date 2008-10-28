@@ -1,0 +1,41 @@
+
+
+class Ordenar:
+
+    def __init__():
+        se
+
+    def leerArchivoTxt(archivo):
+        if (os.path.exists(archivo) and  os.path.isfile(archivo)):
+            arch = open(archivo, "r")
+            archLista = arch.read()
+            archLista = archLista.replace('\r\n', '\n').split('\n')
+            arch.close()
+        return archLista
+
+    def encabezado(encabezado, arcAnlizado):
+        if hayEnc(encabezado, archAnalizado)[0]:
+
+
+
+    def hayEnc(encabezado,archAnalizado):
+            indiceTitulo = -1
+            hay = False
+            
+            for i in range(len(encabezado)):
+                abrir = encabezado[i].find('<!')
+                cerrar = encabezado[i].find('!')
+
+                if indice_abir >= 0 and indice cerrar >= 0:
+                    if encabezado1[i][(indice_abrir +2): indice_cerrar] not in archAnaliza[i]:
+                        hay = False
+                        break
+
+                if "titulo" in encabezado[i]:
+                    indiceTitulo = i
+                    hay = True
+
+            return [hay,indiceTitulo]
+            
+            
+        

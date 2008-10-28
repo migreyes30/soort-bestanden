@@ -36,7 +36,7 @@ listaComunes = ['el', 'la', 'los','las', 'un', 'unos', 'una', 'unas', 'a', 'ante
                 'contra ', 'de', 'desde', 'en', 'entre', 'hasta', 'hacia', 'hasta', 'para','por',
                 'según','sobre', 'y', 'o', 'e', 'u', 'cuando', 'cuándo', 'que', 'qué', 'cada',
                 'él' , 'ella', 'este', 'esta', 'éste', 'está', 'si', 'sí', 'no', 'se','me','lo', 'al', 'es', 'yo',
-                'te','del','le','su','ya','me','algo','alguien','mi']
+                'te','del','le','su','ya','me','algo','alguien','mi','tu']
 
 puntuacion = ['.',',',':',';','!','¡','"',"'","¿",'?','-','..','...','(',')','\x08','\t']
 
@@ -449,7 +449,7 @@ def seleccionarCarpeta(archAnalizar):#(lista_palabras)
         print archAnalizar, "este es el arch que analizara"
         global CARPETAS
 	try:
-            lista = contarRepetidas(leerArchivoTxt(archAnalizar)).keys()
+            lista = contarRepetidas(leerArchivoTxt(archAnalizar))
             #print lista, "estas son las palabras que mas se repitieron"
             CONT_CARPETAS = {}
 
@@ -458,7 +458,7 @@ def seleccionarCarpeta(archAnalizar):#(lista_palabras)
             print CONT_CARPETAS, 'cont_carpetas'
             for a in CARPETAS:
                     for y in CARPETAS[a]:
-                            CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista.count(y)
+                            CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista[y]
             maxi = 0
             llave_max = ""
             for x in CONT_CARPETAS:
@@ -466,10 +466,9 @@ def seleccionarCarpeta(archAnalizar):#(lista_palabras)
                     maxi = CONT_CARPETAS[x]
                     llave_max = x 
                                    
-            if (llave_max != ""):
-                return llave_max
-            else:
-                return ""
+            
+            return llave_max
+          
         except:
             return ""
 
