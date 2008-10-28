@@ -74,15 +74,17 @@ def leerArchivoDoc(archivo):
     return text.replace('\x0b', '\r').split('\r')
 	
 def leerArchivoExcel(archivo):
-	info = ""
+	lista = []
 	excel = win32com.client.Dispatch("Excel.Application")
-	texto = excel.Workbooks.Open(archivo)
-	excel.Visible = 1
-	for i in range(1,10): # Recorre unicamente 10 x 10 celdas
+	texto = excel.Workbooks.Open("G:\prueba.xls")
+	excel.Visible = 0
+	for i in range(1,10):
+		hola =""
 		for j in range(1,10):
-			info += texto.ActiveSheet.Cells(i,j).Value
+			if str(texto.ActiveSheet.Cells(i,j).Value) != 'None':
+				lista.append(str(texto.ActiveSheet.Cells(i,j).Value))
 	excel.Workbooks.Close()
-	return info.replace('\x0b', '\r').split('\r')
+	return lista.replace('\x0b', '\r').split('\r')
 
 def leerArchivoPpt(archivo):
 	ppt = win32com.client.DispatchEx("Powerpoint.Application")
@@ -461,13 +463,23 @@ def moverACarpeta(archAnalizar):
                 escribirDatos(archAnalizar + "  ->  " + dst + "\n")
 
 ## selecciona la carpeta a partir de diccionarios
+def leerComo (archAnalizar):
+	ext = archAnalizar.split('.')[1]
+	if ext == 'doc':
+		return leerArchivoDoc(archAnalizar)
+	elif ext == 'txt':
+		return leerArchivoTxt(archAnalizar)
+	elif ext == 'xls':
+		return leerArchivoExcel(archAnalizar)
+	else:
+		return ""
 def seleccionarCarpeta(archAnalizar):#(lista_palabras)
 				#print archAnalizar, "este es el arch que analizara"
 				global CARPETAS
 				print "seleccionar"
 				if CARPETAS.has_key(''):
 					del CARPETAS['']
-				lista = contarRepetidas(leerArchivoTxt(archAnalizar))
+				lista = contarRepetidas(leerComo(archAnalizar))
 				#print lista, "estas son las palabras que mas se repitieron"
 				CONT_CARPETAS = {}
 				print "CARPETAS : ",CARPETAS
