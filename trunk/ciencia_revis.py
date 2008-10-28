@@ -66,25 +66,39 @@ def leerArchivoTxt(archivo):
 #regresa una lista, donde cada elemento de la lista es una linea del archivo leido
 #sólo lee documentos .doc
 def leerArchivoDoc(archivo):
-    try:
-        word= win32com.client.Dispatch('Word.Application')
-        word.Documents.Open(archivo)
-        text=word.ActiveDocument.Content.Text
-        word.Visible = 0
-        word.Documents.Close()
-        return text.replace('\x0b', '\r').split('\r')
-    except: pass
+    word= win32com.client.Dispatch('Word.Application')
+    word.Documents.Open(archivo)
+    text=word.ActiveDocument.Content.Text
+    word.Visible = 0
+    word.Documents.Close()
+    return text.replace('\x0b', '\r').split('\r')
+	
+def leerArchivoExcel(archivo):
+	info = ""
+	excel = win32com.client.Dispatch("Excel.Application")
+	texto = excel.Workbooks.Open(archivo)
+	excel.Visible = 1
+	for i in range(1,10): # Recorre unicamente 10 x 10 celdas
+		for j in range(1,10):
+			info += texto.ActiveSheet.Cells(i,j).Value
+	excel.Workbooks.Close()
+	return info.replace('\x0b', '\r').split('\r')
 
-################################*********************************************************################################
+def leerArchivoPpt(archivo):
+	ppt = win32com.client.DispatchEx("Powerpoint.Application")
+	ppt.Visible=1
+	text = ppt.Presentations.Open('G:\hola.ppt',False,False)
+	
+#*********************************************************#
 
-##Recibe el archivo para el cual se desea encontrar un titulo adecuado
-##manda leer el archivo que enviara a los distintos metodos
-##si el archivo no esta en blanco:
-##        Con un for recorre la lista con los metodos para encontrar un titulo
-##        recorre todos los metodos hasta que uno devuelve un titulo exitoso
-##        regresa el nombre del titulo obtenido
-##si el archivo esta en blanco:
-##        regresa un numero por default
+#	Recibe el archivo para el cual se desea encontrar un titulo adecuado
+#	manda leer el archivo que enviara a los distintos metodos
+#	si el archivo no esta en blanco:
+#        Con un for recorre la lista con los metodos para encontrar un titulo
+#        recorre todos los metodos hasta que uno devuelve un titulo exitoso
+#       regresa el nombre del titulo obtenido
+#	si el archivo esta en blanco:
+#       regresa un numero por default
 
 def seleccionarTitulo(archivo, ext):
     global EN
@@ -94,6 +108,8 @@ def seleccionarTitulo(archivo, ext):
         archLeido = leerArchivoTxt(archivo)
     elif ext == '.doc':
         archLeido = leerArchivoDoc(archivo)
+    elif ext == '.xls':
+		archLeido = leerArchivoExcel(archivo)
     else:
         EN = EN + 1
         modificarArchivo(rerporteEn, 'EN = ' + str(EN))
@@ -460,8 +476,9 @@ def seleccionarCarpeta(archAnalizar):#(lista_palabras)
 				print "cont_carpetas : ",CONT_CARPETAS
 				for a in CARPETAS:
 						for y in CARPETAS[a]:
-							if lista.has_key(y):
-								CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista[y]
+							if isinstance(lista, str) == False:
+								if lista.has_key(y):
+									CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista[y]
 				maxi = 0
 				llave_max = ""
 				for x in CONT_CARPETAS:
