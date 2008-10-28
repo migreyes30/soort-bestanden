@@ -418,14 +418,14 @@ def ponerTitulo(archivo):
                 titulo = str(titulo)
         if ext >= 0:
                 if(os.path.exists(titulo+ext)):
-                        print archivo[:archivo.rfind("\\") + 1] + titulo+ext, "RUTA"
+                        #print archivo[:archivo.rfind("\\") + 1] + titulo+ext, "RUTA"
                         os.rename(archivo,  archivo[:archivo.rfind("\\") + 1] + titulo+str(EN)+ext)
                        # print archivo, titulo +ext
                         
                         EN = EN + 1
                         modificarArchivo("reporteEn", 'EN = ' + str(EN))
                 else:
-                        print archivo[:archivo.rfind("\\") + 1] + titulo+ext,"RUTA"
+                        #print archivo[:archivo.rfind("\\") + 1] + titulo+ext,"RUTA"
                         os.rename(archivo, archivo[:archivo.rfind("\\") + 1] + titulo+ext)
         
     else:
@@ -446,31 +446,31 @@ def moverACarpeta(archAnalizar):
 
 ## selecciona la carpeta a partir de diccionarios
 def seleccionarCarpeta(archAnalizar):#(lista_palabras)
-        print archAnalizar, "este es el arch que analizara"
-        global CARPETAS
-	try:
-            lista = contarRepetidas(leerArchivoTxt(archAnalizar))
-            #print lista, "estas son las palabras que mas se repitieron"
-            CONT_CARPETAS = {}
-
-            for m in CARPETAS:
-                    CONT_CARPETAS[m] = 0
-            print CONT_CARPETAS, 'cont_carpetas'
-            for a in CARPETAS:
-                    for y in CARPETAS[a]:
-                            CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista[y]
-            maxi = 0
-            llave_max = ""
-            for x in CONT_CARPETAS:
-                if CONT_CARPETAS[x] > maxi:
-                    maxi = CONT_CARPETAS[x]
-                    llave_max = x 
-                                   
-            
-            return llave_max
-          
-        except:
-            return ""
+				#print archAnalizar, "este es el arch que analizara"
+				global CARPETAS
+				print "seleccionar"
+				if CARPETAS.has_key(''):
+					del CARPETAS['']
+				lista = contarRepetidas(leerArchivoTxt(archAnalizar))
+				#print lista, "estas son las palabras que mas se repitieron"
+				CONT_CARPETAS = {}
+				print "CARPETAS : ",CARPETAS
+				for m in CARPETAS:
+						CONT_CARPETAS[m] = 0
+				print "cont_carpetas : ",CONT_CARPETAS
+				for a in CARPETAS:
+						for y in CARPETAS[a]:
+							if lista.has_key(y):
+								CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista[y]
+				maxi = 0
+				llave_max = ""
+				for x in CONT_CARPETAS:
+					if CONT_CARPETAS[x] > maxi:
+						maxi = CONT_CARPETAS[x]
+						llave_max = x 
+				#print "Cont_carpetas : ",cont_Carpetas         
+				print "CARPETAS : ",CARPETAS
+				return llave_max
 
 
 
@@ -483,9 +483,9 @@ def hacer_la_magia():
         global REPORTE
         global carpetaInicio
         listaArchivos = obtenerArchivosCarpetaInicio()
-	print listaArchivos, 'listaarch'
+	#print listaArchivos, 'listaarch'
         for x in listaArchivos:
-	    print x, 'archivo'
+	    #print x, 'archivo'
             if x != "" and x != None:
                # print x, "archivo en hacer la magia"
                 ponerTitulo(x)
