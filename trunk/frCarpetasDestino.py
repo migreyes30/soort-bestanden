@@ -37,7 +37,7 @@ class Frame2(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME2, name='', parent=prnt,
-              pos=wx.Point(400, 150), size=wx.Size(600, 450),
+              pos=wx.Point(430, 240), size=wx.Size(600, 450),
               style=wx.DEFAULT_FRAME_STYLE,
               title='Selecciona las carpetas destino')
         self.SetClientSize(wx.Size(592, 416))
@@ -124,11 +124,11 @@ class Frame2(wx.Frame):
         self.dirBrowseButton6.Show(False)
 
         self.genStaticText1 = wx.lib.stattext.GenStaticText(ID=wxID_FRAME2GENSTATICTEXT1,
-              label='se ordenen los archivos. Puedes agregar mas carpetas con el boton "Agregar mas carpetas"',
+              label='desees que se ordenen los archivos. Puedes escoger hasta 6 directorios diferentes.',
               name='genStaticText1', parent=self, pos=wx.Point(24, 96),
-              size=wx.Size(529, 16), style=0)
+              size=wx.Size(544, 18), style=0)
         self.genStaticText1.Center(wx.HORIZONTAL)
-        self.genStaticText1.SetFont(wx.Font(10, wx.SWISS, wx.NORMAL, wx.NORMAL,
+        self.genStaticText1.SetFont(wx.Font(11, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
         self.genStaticText1.SetBackgroundColour(wx.Colour(239, 239, 239))
 
@@ -148,17 +148,17 @@ class Frame2(wx.Frame):
               id=wxID_FRAME2BOTONGUARDAR)
 
         self.genStaticText2 = wx.lib.stattext.GenStaticText(ID=wxID_FRAME2GENSTATICTEXT1,
-              label='Escriba la ruta o haz clic en examinar para seleccionar los directorios donde desees que',
-              name='genStaticText2', parent=self, pos=wx.Point(32, 72),
-              size=wx.Size(504, 16), style=0)
+              label='Escriba la ruta o haz clic en examninar para seleccionar los directorios donde',
+              name='genStaticText2', parent=self, pos=wx.Point(48, 72),
+              size=wx.Size(495, 18), style=0)
         self.genStaticText2.Center(wx.HORIZONTAL)
-        self.genStaticText2.SetFont(wx.Font(10, wx.SWISS, wx.NORMAL, wx.NORMAL,
+        self.genStaticText2.SetFont(wx.Font(11, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
         self.genStaticText2.SetBackgroundColour(wx.Colour(238, 238, 238))
 
         self.button1 = wx.Button(id=wxID_FRAME2BUTTON1,
-              label='Agregar mas carpetas', name='button1', parent=self,
-              pos=wx.Point(232, 312), size=wx.Size(120, 24), style=0)
+              label=u'Carpetas Extras', name='button1', parent=self,
+              pos=wx.Point(248, 360), size=wx.Size(88, 24), style=0)
         self.button1.Bind(wx.EVT_BUTTON, self.OnButton1Button,
               id=wxID_FRAME2BUTTON1)
 

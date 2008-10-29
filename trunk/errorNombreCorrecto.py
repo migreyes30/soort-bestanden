@@ -13,9 +13,9 @@ class Dialog1(wx.Dialog):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Dialog.__init__(self, id=wxID_DIALOG1, name='', parent=prnt,
-              pos=wx.Point(490, 300), size=wx.Size(331, 143),
-              style=wx.DEFAULT_DIALOG_STYLE, title='\xa1Error!')
-        self.SetClientSize(wx.Size(323, 109))
+              pos=wx.Point(449, 263), size=wx.Size(383, 155),
+              style=wx.DEFAULT_DIALOG_STYLE, title='Error')
+        self.SetClientSize(wx.Size(375, 121))
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'error.png',
               wx.BITMAP_TYPE_PNG), id=wxID_DIALOG1STATICBITMAP1,
@@ -24,14 +24,14 @@ class Dialog1(wx.Dialog):
 
         self.staticText1 = wx.StaticText(id=wxID_DIALOG1STATICTEXT1,
               label=u'Introduce una ruta correcta.', name='staticText1',
-              parent=self, pos=wx.Point(72, 32), size=wx.Size(230, 19),
+              parent=self, pos=wx.Point(80, 32), size=wx.Size(230, 19),
               style=0)
         self.staticText1.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.BOLD,
               False, 'Tahoma'))
 
         self.botonAceptar = wx.Button(id=wxID_DIALOG1BOTONACEPTAR,
               label='Aceptar', name='botonAceptar', parent=self,
-              pos=wx.Point(112, 72), size=wx.Size(112, 23), style=0)
+              pos=wx.Point(128, 80), size=wx.Size(112, 23), style=0)
         self.botonAceptar.Bind(wx.EVT_BUTTON, self.OnBotonAceptarButton,
               id=wxID_DIALOG1BOTONACEPTAR)
 

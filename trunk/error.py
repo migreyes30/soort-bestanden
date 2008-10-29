@@ -13,7 +13,7 @@ class Dialog1(wx.Dialog):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Dialog.__init__(self, id=wxID_DIALOG1, name='', parent=prnt,
-              pos=wx.Point(490, 300), size=wx.Size(383, 155),
+              pos=wx.Point(449, 263), size=wx.Size(383, 155),
               style=wx.DEFAULT_DIALOG_STYLE, title='Error')
         self.SetClientSize(wx.Size(375, 121))
 
