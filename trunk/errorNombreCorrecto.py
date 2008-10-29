@@ -23,8 +23,8 @@ class Dialog1(wx.Dialog):
               size=wx.Size(48, 48), style=0)
 
         self.staticText1 = wx.StaticText(id=wxID_DIALOG1STATICTEXT1,
-              label='Introduce un nombre correcto.', name='staticText1',
-              parent=self, pos=wx.Point(80, 32), size=wx.Size(248, 19),
+              label=u'Introduce una ruta correcta.', name='staticText1',
+              parent=self, pos=wx.Point(80, 32), size=wx.Size(230, 19),
               style=0)
         self.staticText1.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.BOLD,
               False, 'Tahoma'))

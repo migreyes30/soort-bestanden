@@ -4,6 +4,8 @@ import wx
 import configuracion
 import guardaste
 import error
+import error5
+from types import *
 
 def create(parent):
     return Frame2(parent)
@@ -46,63 +48,94 @@ class Frame2(wx.Frame):
         self.staticText2.SetFont(wx.Font(16, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
-        self.etiquetaDir3 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR3, label='',
-              name='etiquetaDir3', parent=self, pos=wx.Point(50, 208),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir3.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
-
         self.staticBox1 = wx.StaticBox(id=wxID_FRAME2STATICBOX1,
               label='Palabras Clave :', name='staticBox1', parent=self,
               pos=wx.Point(28, 112), size=wx.Size(536, 240), style=0)
         self.staticBox1.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.staticBox1.Center(wx.HORIZONTAL)
+#-------------------------------------------------------------------------------
+#direcciones
 
-        self.etiquetaDir2 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR2, label='',
-              name='etiquetaDir2', parent=self, pos=wx.Point(50, 176),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir2.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+	self.etiquetaDir1 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR1, label='',name='etiquetaDir1', parent=self, pos=wx.Point(50, 144),size=wx.Size(0, 13), style=0)
+	self.etiquetaDir1.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir4.Enable(True)
+	
+        self.etiquetaDir2 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR2, label='',name='etiquetaDir2', parent=self, pos=wx.Point(50, 176),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir2.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir2.Enable(True)
 
-        self.etiquetaDir4 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR4, label='',
-              name='etiquetaDir4', parent=self, pos=wx.Point(50, 240),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir4.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.etiquetaDir3 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR3, label='',name='etiquetaDir3', parent=self, pos=wx.Point(50, 208),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir3.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir3.Enable(True)
 
-        self.etiquetaDir5 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR5, label='',
-              name='etiquetaDir5', parent=self, pos=wx.Point(50, 272),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir5.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
-        self.etiquetaDir5.Enable(True)
+        self.etiquetaDir4 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR4, label='',name='etiquetaDir4', parent=self, pos=wx.Point(50, 240),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir4.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir4.Enable(True)
 
-        self.etiquetaDir6 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR6, label='',
-              name='etiquetaDir6', parent=self, pos=wx.Point(50, 304),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir6.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.etiquetaDir5 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR5, label='',name='etiquetaDir5', parent=self, pos=wx.Point(50, 272),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir5.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+        #self.etiquetaDir5.Enable(True)
 
-        self.etiquetaDir1 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR1, label='',
-              name='etiquetaDir1', parent=self, pos=wx.Point(50, 144),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir1.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.etiquetaDir6 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR6, label='',name='etiquetaDir6', parent=self, pos=wx.Point(50, 304),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir6.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir6.Enable(True)
 
-        self.dir3 = wx.TextCtrl(id=wxID_FRAME2DIR3, name='dir3', parent=self,
-              pos=wx.Point(392, 208), size=wx.Size(160, 21), style=0, value='')
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#leer archivo
+	fileDir=open('config.txt','r')
+	dirDest=fileDir.read()
+	fileDir.close()
+	direcciones = dirDest.split("\n")
+	listaDir=direcciones[1].split(",")
+	noEmptyElements = 0
+	for i in xrange(len(listaDir)):
+		if listaDir[i] != '':
+			noEmptyElements=noEmptyElements+1
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#texto palabras
 
-        self.dir4 = wx.TextCtrl(id=wxID_FRAME2DIR4, name='dir4', parent=self,
-              pos=wx.Point(392, 240), size=wx.Size(160, 21), style=0, value='')
+	self.dir1 = wx.TextCtrl(id=wxID_FRAME2DIR1, name='dir1', parent=self,pos=wx.Point(392, 144), size=wx.Size(160, 21), style=0, value='')
+	self.dir2 = wx.TextCtrl(id=wxID_FRAME2DIR2, name='dir2', parent=self,pos=wx.Point(392, 176), size=wx.Size(160, 21), style=0, value='')
+	self.dir3 = wx.TextCtrl(id=wxID_FRAME2DIR3, name='dir3', parent=self, pos=wx.Point(392, 208), size=wx.Size(160, 21), style=0, value='')
+	self.dir4 = wx.TextCtrl(id=wxID_FRAME2DIR4, name='dir4', parent=self,pos=wx.Point(392, 240), size=wx.Size(160, 21), style=0, value='')
+	self.dir5 = wx.TextCtrl(id=wxID_FRAME2DIR5, name='dir5', parent=self,pos=wx.Point(392, 272), size=wx.Size(160, 21), style=0, value='')
+	self.dir6 = wx.TextCtrl(id=wxID_FRAME2DIR6, name='dir6', parent=self,pos=wx.Point(392, 304), size=wx.Size(160, 21), style=0, value='')
 
-        self.dir5 = wx.TextCtrl(id=wxID_FRAME2DIR5, name='dir5', parent=self,
-              pos=wx.Point(392, 272), size=wx.Size(160, 21), style=0, value='')
 
-        self.dir6 = wx.TextCtrl(id=wxID_FRAME2DIR6, name='dir6', parent=self,
-              pos=wx.Point(392, 304), size=wx.Size(160, 21), style=0, value='')
+	if noEmptyElements >= 1:
+		self.dir1.Show(True)
+	else:
+		self.dir1.Show(False)
+		self.dir1.SetValue('$')
+	if noEmptyElements >= 2:
+		self.dir2.Show(True)
+	else:
+		self.dir2.Show(False)
+		self.dir2.SetValue('$')
+	if noEmptyElements >= 3:
+		self.dir3.Show(True)
+	else:
+		self.dir3.Show(False)
+		self.dir3.SetValue('$')
+	if noEmptyElements >= 4:
+		self.dir4.Show(True)
+	else:
+		self.dir4.Show(False)
+		self.dir4.SetValue('$')
+	if noEmptyElements >= 5:
+		self.dir5.Show(True)
+	else:
+		self.dir5.Show(False)
+		self.dir5.SetValue('$')
+	if noEmptyElements == 6:
+		self.dir6.Show(True)
+	else:
+		self.dir6.Show(False)
+		self.dir6.SetValue('$')
 
-        self.dir2 = wx.TextCtrl(id=wxID_FRAME2DIR2, name='dir2', parent=self,
-              pos=wx.Point(392, 176), size=wx.Size(160, 21), style=0, value='')
+#-------------------------------------------------------------------------------
 
         self.staticText3 = wx.StaticText(id=wxID_FRAME2STATICTEXT3,
               label='para cada uno de los directorios que escogiste.',
@@ -132,9 +165,6 @@ class Frame2(wx.Frame):
         self.staticText4.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.NORMAL,
               False, 'Tahoma'))
 
-        self.dir1 = wx.TextCtrl(id=wxID_FRAME2DIR1, name='dir1', parent=self,
-              pos=wx.Point(392, 144), size=wx.Size(160, 21), style=0, value='')
-
     def __init__(self, parent):
         self._init_ctrls(parent)
 
@@ -161,12 +191,13 @@ class Frame2(wx.Frame):
         for i in range(len(listaDirectorios)):
             listaEtiquetas[i].SetLabel(listaDirectorios[i])
         file.close()
+        
+        
     def OnBotonGuardarButton(self, event):
         cosa = open('config.txt','r')
         x = cosa.readlines()
         # Para comprobar si ya se han guardado palabras antes.
         if len(x) < 3:
-    
     #-------- Creamos una lista para cada grupo de palabras clave. -------
             listaDir1 = []
             listaDir2 = []
@@ -175,31 +206,54 @@ class Frame2(wx.Frame):
             listaDir5 = []
             listaDir6 = []
     #--------- Aqui obtenemos las palabras clave que el usuario ingresa. ---------
-            try:
-                palabras1 = self.dir1.GetValue()
-                palabras2 = self.dir2.GetValue()
-                palabras3 = self.dir3.GetValue()
-                palabras4 = self.dir4.GetValue()
-                palabras5 = self.dir5.GetValue()
-                palabras6 = self.dir6.GetValue()
+            palabras1 = self.dir1.GetValue().encode('utf8')
+            palabras2 = self.dir2.GetValue().encode('utf8')
+            palabras3 = self.dir3.GetValue().encode('utf8')
+            palabras4 = self.dir4.GetValue().encode('utf8')
+            palabras5 = self.dir5.GetValue().encode('utf8')
+            palabras6 = self.dir6.GetValue().encode('utf8')
+	    
+            listaDir1 = palabras1[0:len(palabras1)].split(',')
+            listaDir2 = palabras2[0:len(palabras2)].split(',')
+            listaDir3 = palabras3[0:len(palabras3)].split(',')
+            listaDir4 = palabras4[0:len(palabras4)].split(',')
+            listaDir5 = palabras5[0:len(palabras5)].split(',')
+            listaDir6 = palabras6[0:len(palabras6)].split(',')
             
-            
-                listaDir1 = palabras1[0:len(palabras1)].split(',')
-                listaDir2 = palabras2[0:len(palabras2)].split(',')
-                listaDir3 = palabras3[0:len(palabras3)].split(',')
-                listaDir4 = palabras4[0:len(palabras4)].split(',')
-                listaDir5 = palabras5[0:len(palabras5)].split(',')
-                listaDir6 = palabras6[0:len(palabras6)].split(',')
-    #----------- Las palabras de cada carpeta son separadas por !! ---------       
-                palabras = ','.join(listaDir1) + "!!" + ','.join(listaDir2) + "!!" + ','.join(listaDir3) + "!!" + ','.join(listaDir4) + "!!" +','.join(listaDir5) + "!!" + ','.join(listaDir6) + "\n"
-            except: pass
-            output = file("config.txt", "a")
-            output.write("")
-            output.write(palabras)
-            output.close()
-            ventanaX = guardaste.create(None)
-            ventanaX.Show()
 
+            
+#----------- Las palabras de cada carpeta son separadas por !! ---------
+            
+            if listaDir1[0] == '' or listaDir2[0] == '' or listaDir3[0] == '' or listaDir4[0] == '' or listaDir5[0] == '' or listaDir6[0] == '':
+                ventanaErrorW = error5.create(None)
+                ventanaErrorW.Show()
+            
+            else:
+                if listaDir1[0] == '$':
+                    listaDir1[0] = ''
+                if listaDir2[0] == '$':
+                    listaDir2[0] = ''
+                if listaDir3[0] == '$':
+                    listaDir3[0] = ''
+                if listaDir4[0] == '$':
+                    listaDir4[0] = ''
+                if listaDir5[0] == '$':
+                    listaDir5[0] = ''
+                if listaDir6[0] == '$':
+                    listaDir6[0] = ''
+                palabras = ','.join(listaDir1) + "!!" + ','.join(listaDir2) + "!!" + ','.join(listaDir3) + "!!" + ','.join(listaDir4) + "!!" +','.join(listaDir5) + "!!" + ','.join(listaDir6) + "\n"
+                output = file("config.txt", "a")
+                output.write("")
+                output.write(palabras)
+                output.close()
+                ventanaX = guardaste.create(None)
+                ventanaX.Show()
+                self.dir1.Enable(False)
+                self.dir2.Enable(False)
+                self.dir3.Enable(False)
+                self.dir4.Enable(False)
+                self.dir5.Enable(False)
+                self.dir6.Enable(False)
 
         else:
             ventanaError = error.create(None)

@@ -6,7 +6,9 @@ import wx.lib.filebrowsebutton
 import configuracion
 import guardaste
 import error
+import error5
 import errorNombreCorrecto
+import os.path
 
 def create(parent):
     return Frame2(parent)
@@ -21,13 +23,12 @@ class Frame2(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME2, name='', parent=prnt,
-              pos=wx.Point(400, 150), size=wx.Size(600, 451),
+              pos=wx.Point(504, 190), size=wx.Size(600, 451),
               style=wx.DEFAULT_FRAME_STYLE,
               title='Configuraci\xf3n de la carpeta inicial')
         self.SetClientSize(wx.Size(592, 417))
         self.SetBackgroundColour(wx.Colour(235, 235, 235))
-        self.SetIcon(wx.Icon(u'icon.ico',
-              wx.BITMAP_TYPE_ICO))
+        self.SetIcon(wx.Icon(u'icon.ico',wx.BITMAP_TYPE_ICO))
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'config.png',
               wx.BITMAP_TYPE_PNG), id=wxID_FRAME2STATICBITMAP1,
@@ -96,26 +97,29 @@ class Frame2(wx.Frame):
         self.Destroy()
         ventanaInicial.Show()
 
-    def OnButton1Button(self, event):
-        x = self.botonDirectorio.GetValue()
-        print x
-
     def OnBotonGuardarButton(self, event):
         cosa = open('config.txt','r')
         x = cosa.readlines()
         direc = self.botonDirectorio.GetValue()
         
         if direc == "":
-            ventanaError2 = errorNombreCorrecto.create(None)
+            ventanaError2 = error5.create(None)
             ventanaError2.Show()
         elif len(x) < 1:
+            
             ruta = self.botonDirectorio.GetValue()
-            ruta = "" +ruta + "\n"
-            output = file("config.txt", "a")
-            output.write(ruta)
-            output.close()
-            ventanaX = guardaste.create(None)
-            ventanaX.Show()
+            ruta = ruta.encode('utf8')
+            if os.path.exists(ruta) and os.path.isdir(ruta):
+                output = file("config.txt", "a")
+                output.write(ruta)
+                output.write("\n")
+                output.close()
+                ventanaX = guardaste.create(None)
+                ventanaX.Show()
+                self.botonDirectorio.Enable(False)
+            else:
+                ventanaError3 = errorNombreCorrecto.create(None)
+                ventanaError3.Show()
         else:
             ventanaError = error.create(None)
             ventanaError.Show()
