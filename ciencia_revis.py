@@ -513,10 +513,10 @@ def hacer_la_magia():
     global REPORTE
     global carpetaInicio
     listaArchivos = obtenerArchivosCarpetaInicio()
-    print listaArchivos
+    ##print listaArchivos
     #print listaArchivos, 'listaarch'
     for x in listaArchivos:
-		print x, 'archivo'
+		##print x, 'archivo'
 		if x != "" and x != None:
             # print x, "archivo en hacer la magia"
 			ponerTitulo(x)

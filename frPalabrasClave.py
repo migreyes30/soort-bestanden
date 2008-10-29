@@ -27,7 +27,8 @@ class Frame2(wx.Frame):
               style=wx.DEFAULT_FRAME_STYLE, title='Palabras clave')
         self.SetClientSize(wx.Size(592, 416))
         self.SetBackgroundColour(wx.Colour(255, 255, 255))
-        self.SetIcon(wx.Icon(u'icon.ico',wx.BITMAP_TYPE_ICO))
+        self.SetIcon(wx.Icon(u'icon.ico',
+              wx.BITMAP_TYPE_ICO))
         self.Bind(wx.EVT_ACTIVATE, self.OnFrame2Activate)
 
         self.staticBitmap1 = wx.StaticBitmap(bitmap=wx.Bitmap(u'config.png',
@@ -52,78 +53,89 @@ class Frame2(wx.Frame):
               pos=wx.Point(28, 112), size=wx.Size(536, 240), style=0)
         self.staticBox1.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.staticBox1.Center(wx.HORIZONTAL)
+#-------------------------------------------------------------------------------
+#direcciones
 
-        self.etiquetaDir1 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR1, label='',
-              name='etiquetaDir1', parent=self, pos=wx.Point(50, 144),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir1.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+	self.etiquetaDir1 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR1, label='',name='etiquetaDir1', parent=self, pos=wx.Point(50, 144),size=wx.Size(0, 13), style=0)
+	self.etiquetaDir1.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir4.Enable(True)
+	
+        self.etiquetaDir2 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR2, label='',name='etiquetaDir2', parent=self, pos=wx.Point(50, 176),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir2.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir2.Enable(True)
 
-        self.etiquetaDir2 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR2, label='',
-              name='etiquetaDir2', parent=self, pos=wx.Point(50, 176),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir2.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.etiquetaDir3 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR3, label='',name='etiquetaDir3', parent=self, pos=wx.Point(50, 208),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir3.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir3.Enable(True)
 
-        self.etiquetaDir3 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR3, label='',
-              name='etiquetaDir3', parent=self, pos=wx.Point(50, 208),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir3.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.etiquetaDir4 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR4, label='',name='etiquetaDir4', parent=self, pos=wx.Point(50, 240),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir4.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir4.Enable(True)
 
-        self.etiquetaDir4 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR4, label='',
-              name='etiquetaDir4', parent=self, pos=wx.Point(50, 240),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir4.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.etiquetaDir5 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR5, label='',name='etiquetaDir5', parent=self, pos=wx.Point(50, 272),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir5.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+        #self.etiquetaDir5.Enable(True)
 
-        self.etiquetaDir5 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR5, label='',
-              name='etiquetaDir5', parent=self, pos=wx.Point(50, 272),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir5.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+        self.etiquetaDir6 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR6, label='',name='etiquetaDir6', parent=self, pos=wx.Point(50, 304),size=wx.Size(0, 13), style=0)
+        self.etiquetaDir6.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,False, 'Tahoma'))
+	#self.etiquetaDir6.Enable(True)
 
-        self.etiquetaDir6 = wx.StaticText(id=wxID_FRAME2ETIQUETADIR6, label='',
-              name='etiquetaDir6', parent=self, pos=wx.Point(50, 304),
-              size=wx.Size(0, 13), style=0)
-        self.etiquetaDir6.SetFont(wx.Font(8, wx.SWISS, wx.NORMAL, wx.NORMAL,
-              False, 'Tahoma'))
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#leer archivo
+	fileDir=open('config.txt','r')
+	dirDest=fileDir.read()
+	fileDir.close()
+	direcciones = dirDest.split("\n")
+	listaDir=direcciones[1].split(",")
+	noEmptyElements = 0
+	for i in xrange(len(listaDir)):
+		if listaDir[i] != '':
+			noEmptyElements=noEmptyElements+1
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#texto palabras
 
-        self.dir1 = wx.TextCtrl(id=wxID_FRAME2DIR1, name='dir1', parent=self,
-              pos=wx.Point(392, 144), size=wx.Size(160, 21), style=0, value='')
-        self.dir1.Show(True)
-        self.dir1.Show(False)
-        self.dir1.SetValue('$')
+	self.dir1 = wx.TextCtrl(id=wxID_FRAME2DIR1, name='dir1', parent=self,pos=wx.Point(392, 144), size=wx.Size(160, 21), style=0, value='')
+	self.dir2 = wx.TextCtrl(id=wxID_FRAME2DIR2, name='dir2', parent=self,pos=wx.Point(392, 176), size=wx.Size(160, 21), style=0, value='')
+	self.dir3 = wx.TextCtrl(id=wxID_FRAME2DIR3, name='dir3', parent=self, pos=wx.Point(392, 208), size=wx.Size(160, 21), style=0, value='')
+	self.dir4 = wx.TextCtrl(id=wxID_FRAME2DIR4, name='dir4', parent=self,pos=wx.Point(392, 240), size=wx.Size(160, 21), style=0, value='')
+	self.dir5 = wx.TextCtrl(id=wxID_FRAME2DIR5, name='dir5', parent=self,pos=wx.Point(392, 272), size=wx.Size(160, 21), style=0, value='')
+	self.dir6 = wx.TextCtrl(id=wxID_FRAME2DIR6, name='dir6', parent=self,pos=wx.Point(392, 304), size=wx.Size(160, 21), style=0, value='')
 
-        self.dir2 = wx.TextCtrl(id=wxID_FRAME2DIR2, name='dir2', parent=self,
-              pos=wx.Point(392, 176), size=wx.Size(160, 21), style=0, value='')
-        self.dir2.Show(True)
-        self.dir2.Show(False)
-        self.dir2.SetValue('$')
 
-        self.dir3 = wx.TextCtrl(id=wxID_FRAME2DIR3, name='dir3', parent=self,
-              pos=wx.Point(392, 208), size=wx.Size(160, 21), style=0, value='')
-        self.dir3.Show(True)
-        self.dir3.Show(False)
-        self.dir3.SetValue('$')
+	if noEmptyElements >= 1:
+		self.dir1.Show(True)
+	else:
+		self.dir1.Show(False)
+		self.dir1.SetValue('$')
+	if noEmptyElements >= 2:
+		self.dir2.Show(True)
+	else:
+		self.dir2.Show(False)
+		self.dir2.SetValue('$')
+	if noEmptyElements >= 3:
+		self.dir3.Show(True)
+	else:
+		self.dir3.Show(False)
+		self.dir3.SetValue('$')
+	if noEmptyElements >= 4:
+		self.dir4.Show(True)
+	else:
+		self.dir4.Show(False)
+		self.dir4.SetValue('$')
+	if noEmptyElements >= 5:
+		self.dir5.Show(True)
+	else:
+		self.dir5.Show(False)
+		self.dir5.SetValue('$')
+	if noEmptyElements == 6:
+		self.dir6.Show(True)
+	else:
+		self.dir6.Show(False)
+		self.dir6.SetValue('$')
 
-        self.dir4 = wx.TextCtrl(id=wxID_FRAME2DIR4, name='dir4', parent=self,
-              pos=wx.Point(392, 240), size=wx.Size(160, 21), style=0, value='')
-        self.dir4.Show(True)
-        self.dir4.Show(False)
-        self.dir4.SetValue('$')
-
-        self.dir5 = wx.TextCtrl(id=wxID_FRAME2DIR5, name='dir5', parent=self,
-              pos=wx.Point(392, 272), size=wx.Size(160, 21), style=0, value='')
-        self.dir5.Show(True)
-        self.dir5.Show(False)
-        self.dir5.SetValue('$')
-
-        self.dir6 = wx.TextCtrl(id=wxID_FRAME2DIR6, name='dir6', parent=self,
-              pos=wx.Point(392, 304), size=wx.Size(160, 21), style=0, value='')
-        self.dir6.Show(True)
-        self.dir6.Show(False)
-        self.dir6.SetValue('$')
+#-------------------------------------------------------------------------------
 
         self.staticText3 = wx.StaticText(id=wxID_FRAME2STATICTEXT3,
               label='para cada uno de los directorios que escogiste.',
