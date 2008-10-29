@@ -12,7 +12,7 @@ class asd(wx.Dialog):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Dialog.__init__(self, id=wxID_ASD, name='asd', parent=prnt,
-              pos=wx.Point(500, 290), size=wx.Size(398, 141),
+              pos=wx.Point(490, 300), size=wx.Size(398, 141),
               style=wx.DEFAULT_DIALOG_STYLE, title='Felicidades')
         self.SetClientSize(wx.Size(390, 107))
 

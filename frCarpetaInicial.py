@@ -23,7 +23,7 @@ class Frame2(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME2, name='', parent=prnt,
-              pos=wx.Point(504, 190), size=wx.Size(600, 451),
+              pos=wx.Point(400, 150), size=wx.Size(600, 451),
               style=wx.DEFAULT_FRAME_STYLE,
               title='Configuraci\xf3n de la carpeta inicial')
         self.SetClientSize(wx.Size(592, 417))

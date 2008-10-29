@@ -76,15 +76,15 @@ def leerArchivoDoc(archivo):
 def leerArchivoExcel(archivo):
 	lista = []
 	excel = win32com.client.Dispatch("Excel.Application")
-	texto = excel.Workbooks.Open("G:\prueba.xls")
-	excel.Visible = 0
+	texto = excel.Workbooks.Open(archivo)
+	excel.Visible = 1
 	for i in range(1,10):
 		hola =""
 		for j in range(1,10):
 			if str(texto.ActiveSheet.Cells(i,j).Value) != 'None':
 				lista.append(str(texto.ActiveSheet.Cells(i,j).Value))
 	excel.Workbooks.Close()
-	return lista.replace('\x0b', '\r').split('\r')
+	return lista
 
 def leerArchivoPpt(archivo):
 	ppt = win32com.client.DispatchEx("Powerpoint.Application")
@@ -470,6 +470,7 @@ def leerComo (archAnalizar):
 	elif ext == 'txt':
 		return leerArchivoTxt(archAnalizar)
 	elif ext == 'xls':
+		#print "Leer archivo excel"
 		return leerArchivoExcel(archAnalizar)
 	else:
 		return ""
@@ -509,34 +510,36 @@ def seleccionarCarpeta(archAnalizar):#(lista_palabras)
 ## se mandan llamar las funciones necesarias para cambiar de nombre y carpeta a todos los archivos con extensión admitida por el software
 ## Genera el reportre
 def hacer_la_magia():
-        global REPORTE
-        global carpetaInicio
-        listaArchivos = obtenerArchivosCarpetaInicio()
-	#print listaArchivos, 'listaarch'
-        for x in listaArchivos:
-	    #print x, 'archivo'
-            if x != "" and x != None:
-               # print x, "archivo en hacer la magia"
-                ponerTitulo(x)
-                moverACarpeta(x)
-        REPORTE = REPORTE + 1
-        modificarArchivo("reporteEn", "REPORTE = " + str(REPORTE))
+    global REPORTE
+    global carpetaInicio
+    listaArchivos = obtenerArchivosCarpetaInicio()
+    print listaArchivos
+    #print listaArchivos, 'listaarch'
+    for x in listaArchivos:
+		print x, 'archivo'
+		if x != "" and x != None:
+            # print x, "archivo en hacer la magia"
+			ponerTitulo(x)
+			moverACarpeta(x)
+    REPORTE = REPORTE + 1
+    modificarArchivo("reporteEn", "REPORTE = " + str(REPORTE))
 
 
 
 ################################*********************************************************################################
 
-permitidas = ['.txt', '.doc']
+permitidas = ['.txt', '.doc','.xls']
 
 ## Obtiene los archivos con extension permitidos  los regresa en una lista
 def obtenerArchivosCarpetaInicio():
-        global carpetaInicio
-        archivosEnDir = os.listdir(carpetaInicio)
-        listaArchivos = []
-        for archivo in archivosEnDir:
-                ext = archivo[archivo.rfind("."):].lower()
-                if ext in permitidas:
-                    listaArchivos.append(carpetaInicio + "\\" +  archivo)
+    global carpetaInicio
+    archivosEnDir = os.listdir(carpetaInicio)
+    print archivosEnDir
+    listaArchivos = []
+    for archivo in archivosEnDir:
+        ext = archivo[archivo.rfind("."):].lower()
+        if ext in permitidas:
+            listaArchivos.append(carpetaInicio + "\\" +  archivo)
                     
                        
         return listaArchivos
