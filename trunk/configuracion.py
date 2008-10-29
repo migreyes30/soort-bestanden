@@ -249,9 +249,12 @@ class Frame2(wx.Frame):
         cosa = open('config.txt','r')
         x = cosa.readlines()
         if len(x) == 3 :
-            ventanaEncabezado = frEncabezado.create(None)
-            self.Destroy()
-            ventanaEncabezado.Show()
+	    ventanaEncabezado = frEncabezado.create(None)
+	    self.Destroy()
+	    ventanaEncabezado.Show()
+	elif len(x) > 3:
+            ventanaErrorYaHasConfigurado = errorYaHasConfigurado.create(None)
+            ventanaErrorYaHasConfigurado.Show()
         else:
             ventanaError4 = error4.create(None)
             ventanaError4.Show()
