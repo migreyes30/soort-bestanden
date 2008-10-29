@@ -5,6 +5,8 @@ import wx.lib.filebrowsebutton
 import configuracion
 import guardaste
 import error
+import error5
+import os.path
 
 def create(parent):
     return Frame2(parent)
@@ -93,12 +95,17 @@ class Frame2(wx.Frame):
             ventanaError2 = errorNombreCorrecto.create(None)
             ventanaError2.Show()
         elif len(x) < 4:
-            archivoEnc = self.archivoEnc.GetValue()
-            output = file("config.txt", "a")
-            output.write(archivoEnc)
-            output.close()
-            ventanaX = guardaste.create(None)
-            ventanaX.Show()
+		temp = self.archivoEnc.GetValue().encode('utf8')
+	    if os.path.exists(temp) and os.path.isdir(temp):
+		     archivoEnc = self.archivoEnc.GetValue().encode('utf8')
+		     output = file("config.txt", "a")
+		     output.write(archivoEnc)
+		     output.close()
+		     ventanaX = guardaste.create(None)
+		     ventanaX.Show()
+	    else :
+		    ventanaE = error5.creat(None)
+		    vetanaE.Show()
         else:
             ventanaError = error.create(None)
             ventanaError.Show()
