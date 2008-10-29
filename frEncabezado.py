@@ -89,23 +89,20 @@ class Frame2(wx.Frame):
     def OnBotonGuardarButton(self, event):
         cosa = open('config.txt','r')
         x = cosa.readlines()
-        direc = self.botonDirectorio.GetValue()
-        
-        if direc == "":
-            ventanaError2 = errorNombreCorrecto.create(None)
-            ventanaError2.Show()
-        elif len(x) < 4:
-		temp = self.archivoEnc.GetValue().encode('utf8')
-	    if os.path.exists(temp) and os.path.isdir(temp):
-		     archivoEnc = self.archivoEnc.GetValue().encode('utf8')
-		     output = file("config.txt", "a")
-		     output.write(archivoEnc)
-		     output.close()
-		     ventanaX = guardaste.create(None)
-		     ventanaX.Show()
-	    else :
-		    ventanaE = error5.creat(None)
-		    vetanaE.Show()
+     
+        if len(x) < 4:
+			temp = self.archivoEnc.GetValue().encode('utf8')
+			temp2 = temp.split('\\')
+			if os.path.exists(temp) and os.path.isfile(temp2[-1]):
+				archivoEnc = self.archivoEnc.GetValue().encode('utf8')
+				output = file("config.txt", "a")
+				output.write(archivoEnc)
+				output.close()
+				ventanaX = guardaste.create(None)
+				ventanaX.Show()
+			else :
+				ventanaE = error5.create(None)
+				ventanaE.Show()
         else:
             ventanaError = error.create(None)
             ventanaError.Show()
