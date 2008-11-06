@@ -41,7 +41,7 @@ listaComunes = ['el', 'la', 'los','las', 'un', 'unos', 'una', 'unas', 'a', 'ante
 puntuacion = ['.',',',':',';','!','¡','"',"'","¿",'?','-','..','...','(',')','\x08','\t']
 
 
-finales = ['presenta', 'es','trata' , 'sirve', 'tiene', 'son', 'para','fue', 'analiza', 'que', 'depende']
+finales = ['presenta', 'es','trata' , 'sirve', 'tiene', 'son', 'para','fue', 'analiza', 'que', 'depende', 'conocida', 'fue']
 principios = ['el', 'la', 'los','las', 'un', 'unos', 'una', 'unas']
 
 
@@ -77,10 +77,10 @@ def leerArchivoExcel(archivo):
 	lista = []
 	excel = win32com.client.Dispatch("Excel.Application")
 	texto = excel.Workbooks.Open(archivo)
-	excel.Visible = 1
-	for i in range(1,10):
+	excel.Visible = 0
+	for i in range(1,20):
 		hola =""
-		for j in range(1,10):
+		for j in range(1,20):
 			if str(texto.ActiveSheet.Cells(i,j).Value) != 'None':
 				lista.append(str(texto.ActiveSheet.Cells(i,j).Value))
 	excel.Workbooks.Close()
@@ -477,16 +477,16 @@ def leerComo (archAnalizar):
 def seleccionarCarpeta(archAnalizar):#(lista_palabras)
 				#print archAnalizar, "este es el arch que analizara"
 				global CARPETAS
-				print "seleccionar"
+				#print "seleccionar"
 				if CARPETAS.has_key(''):
 					del CARPETAS['']
 				lista = contarRepetidas(leerComo(archAnalizar))
 				#print lista, "estas son las palabras que mas se repitieron"
 				CONT_CARPETAS = {}
-				print "CARPETAS : ",CARPETAS
+				#print "CARPETAS : ",CARPETAS
 				for m in CARPETAS:
 						CONT_CARPETAS[m] = 0
-				print "cont_carpetas : ",CONT_CARPETAS
+				#print "cont_carpetas : ",CONT_CARPETAS
 				for a in CARPETAS:
 						for y in CARPETAS[a]:
 							if isinstance(lista, str) == False:
@@ -499,7 +499,7 @@ def seleccionarCarpeta(archAnalizar):#(lista_palabras)
 						maxi = CONT_CARPETAS[x]
 						llave_max = x 
 				#print "Cont_carpetas : ",cont_Carpetas         
-				print "CARPETAS : ",CARPETAS
+				#print "CARPETAS : ",CARPETAS
 				return llave_max
 
 
@@ -513,10 +513,18 @@ def hacer_la_magia():
     global REPORTE
     global carpetaInicio
     listaArchivos = obtenerArchivosCarpetaInicio()
+<<<<<<< .mine
+    #print listaArchivos, 'sdfsgdfgfggfhgh gay el que lolea'
+=======
     ##print listaArchivos
+>>>>>>> .r48
     #print listaArchivos, 'listaarch'
     for x in listaArchivos:
+<<<<<<< .mine
+		#print x, 'archivo'
+=======
 		##print x, 'archivo'
+>>>>>>> .r48
 		if x != "" and x != None:
             # print x, "archivo en hacer la magia"
 			ponerTitulo(x)
@@ -534,15 +542,17 @@ permitidas = ['.txt', '.doc','.xls']
 def obtenerArchivosCarpetaInicio():
     global carpetaInicio
     archivosEnDir = os.listdir(carpetaInicio)
-    print archivosEnDir
+    #print archivosEnDir
     listaArchivos = []
     for archivo in archivosEnDir:
-        ext = archivo[archivo.rfind("."):].lower()
-        if ext in permitidas:
-            listaArchivos.append(carpetaInicio + "\\" +  archivo)
-                    
+	try:
+	    ext = archivo[archivo.rfind("."):].lower()
+	    if ext in permitidas:
+                listaArchivos.append(carpetaInicio + "\\" +  archivo)
+        except: 
+            pass    
                        
-        return listaArchivos
+    return listaArchivos
 
 def escribirDatos(escribir):
     f = open("Reporte" + str(REPORTE), "a")
