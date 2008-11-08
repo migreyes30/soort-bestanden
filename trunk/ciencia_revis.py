@@ -11,7 +11,7 @@ import win32com.client
 
 #archEncabezado = "enca.txt"
 ## Variables que se configuran al incio por el usuario, a expecion de EN
-## PALABRAS se obtiene del encabezado y son palabras que se podrían encontrar en el encabezado aunque se cuente con encabezdo
+## PALABRAS se obtiene del encabezado y son palabras que se podrï¿½an encontrar en el encabezado aunque se cuente con encabezdo
 ## EN es un contador que se configura con el archivo que se encuentre en la variable reporteEn
 
 carpetaInicio = ''
@@ -34,11 +34,11 @@ MESES = ['enero','febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio','agosto',
 
 listaComunes = ['el', 'la', 'los','las', 'un', 'unos', 'una', 'unas', 'a', 'ante', 'con',
                 'contra ', 'de', 'desde', 'en', 'entre', 'hasta', 'hacia', 'hasta', 'para','por',
-                'según','sobre', 'y', 'o', 'e', 'u', 'cuando', 'cuándo', 'que', 'qué', 'cada',
-                'él' , 'ella', 'este', 'esta', 'éste', 'está', 'si', 'sí', 'no', 'se','me','lo', 'al', 'es', 'yo',
+                'segï¿½n','sobre', 'y', 'o', 'e', 'u', 'cuando', 'cuï¿½ndo', 'que', 'quï¿½', 'cada',
+                'ï¿½l' , 'ella', 'este', 'esta', 'ï¿½ste', 'estï¿½', 'si', 'sï¿½', 'no', 'se','me','lo', 'al', 'es', 'yo',
                 'te','del','le','su','ya','me','algo','alguien','mi','tu']
 
-puntuacion = ['.',',',':',';','!','¡','"',"'","¿",'?','-','..','...','(',')','\x08','\t']
+puntuacion = ['.',',',':',';','!','ï¿½','"',"'","ï¿½",'?','-','..','...','(',')','\x08','\t']
 
 
 finales = ['presenta', 'es','trata' , 'sirve', 'tiene', 'son', 'para','fue', 'analiza', 'que', 'depende', 'conocida', 'fue']
@@ -64,7 +64,7 @@ def leerArchivoTxt(archivo):
 #leerArchivoDoc recibe el nombre del archivo que deseas leer
 #lee el archivo
 #regresa una lista, donde cada elemento de la lista es una linea del archivo leido
-#sólo lee documentos .doc
+#sï¿½lo lee documentos .doc
 def leerArchivoDoc(archivo):
     word= win32com.client.Dispatch('Word.Application')
     word.Documents.Open(archivo)
@@ -72,34 +72,34 @@ def leerArchivoDoc(archivo):
     word.Visible = 0
     word.Documents.Close()
     return text.replace('\x0b', '\r').split('\r')
-	
+    
 def leerArchivoExcel(archivo):
-	lista = []
-	excel = win32com.client.Dispatch("Excel.Application")
-	texto = excel.Workbooks.Open(archivo)
-	excel.Visible = 0
-	for i in range(1,20):
-		hola =""
-		for j in range(1,20):
-			if str(texto.ActiveSheet.Cells(i,j).Value) != 'None':
-				lista.append(str(texto.ActiveSheet.Cells(i,j).Value))
-	excel.Workbooks.Close()
-	return lista
+    lista = []
+    excel = win32com.client.Dispatch("Excel.Application")
+    texto = excel.Workbooks.Open(archivo)
+    excel.Visible = 0
+    for i in range(1,20):
+        hola =""
+        for j in range(1,20):
+            if str(texto.ActiveSheet.Cells(i,j).Value) != 'None':
+                lista.append(str(texto.ActiveSheet.Cells(i,j).Value))
+    excel.Workbooks.Close()
+    return lista
 
 def leerArchivoPpt(archivo):
-	ppt = win32com.client.DispatchEx("Powerpoint.Application")
-	ppt.Visible=1
-	text = ppt.Presentations.Open('G:\hola.ppt',False,False)
-	
+    ppt = win32com.client.DispatchEx("Powerpoint.Application")
+    ppt.Visible=1
+    text = ppt.Presentations.Open('G:\hola.ppt',False,False)
+    
 #*********************************************************#
 
-#	Recibe el archivo para el cual se desea encontrar un titulo adecuado
-#	manda leer el archivo que enviara a los distintos metodos
-#	si el archivo no esta en blanco:
+#   Recibe el archivo para el cual se desea encontrar un titulo adecuado
+#   manda leer el archivo que enviara a los distintos metodos
+#   si el archivo no esta en blanco:
 #        Con un for recorre la lista con los metodos para encontrar un titulo
 #        recorre todos los metodos hasta que uno devuelve un titulo exitoso
 #       regresa el nombre del titulo obtenido
-#	si el archivo esta en blanco:
+#   si el archivo esta en blanco:
 #       regresa un numero por default
 
 def seleccionarTitulo(archivo, ext):
@@ -111,7 +111,7 @@ def seleccionarTitulo(archivo, ext):
     elif ext == '.doc':
         archLeido = leerArchivoDoc(archivo)
     elif ext == '.xls':
-		archLeido = leerArchivoExcel(archivo)
+        archLeido = leerArchivoExcel(archivo)
     else:
         EN = EN + 1
         modificarArchivo(rerporteEn, 'EN = ' + str(EN))
@@ -158,7 +158,7 @@ def match(archAnaliza,encabezado1):
 
 ## encabezado
 ## Recibe el archivo que se quiere analizar
-## De haber encontrada un título regresa el título corresponidente, de lo contrario regresa ""
+## De haber encontrada un tï¿½tulo regresa el tï¿½tulo corresponidente, de lo contrario regresa ""
 def encabezado(archAnalizar):
 
     titulo = ""
@@ -210,10 +210,10 @@ def encabezado(archAnalizar):
 
 ################################*********************************************************################################
 
-## Cuenta las palabras significativas que más se repiten
+## Cuenta las palabras significativas que mï¿½s se repiten
 ## La lista de comunes son palabras que no deben tomarse en cuenta, al igual que la lista PALABRAS
 ## Regresa una lista con 5 palabras que se repitieron constamenente en el documento
-## La función se dividio en tres metodos para poder rehusar el codigo en otras secciones
+## La funciï¿½n se dividio en tres metodos para poder rehusar el codigo en otras secciones
 
 def contarRepetidas(archAnalizar):
     
@@ -270,7 +270,7 @@ def listaContarRepetidas(archAnalizar):
 
 ################################*********************************************************################################
 
-## se obtienen un titulo a partir de la oración principal
+## se obtienen un titulo a partir de la oraciï¿½n principal
 
 
 ## quita strings de cada elemento de una lista
@@ -379,7 +379,7 @@ def quitar_Formato (archAnalizar):
        
 
                 ## listaAnalizar es una lista con 1 palabra cada elemento..
-                ## se volvera a analizar la misma linea porque puede que haya Claudia Bellido        Día del Trabajo
+                ## se volvera a analizar la misma linea porque puede que haya Claudia Bellido        Dï¿½a del Trabajo
                 for x in PALABRAS:
                         if x in listaAnalizar:
                                 archAnalizar[i] = archAnalizar[i].replace(x, "")
@@ -464,71 +464,62 @@ def moverACarpeta(archAnalizar):
 
 ## selecciona la carpeta a partir de diccionarios
 def leerComo (archAnalizar):
-	ext = archAnalizar.split('.')[1]
-	if ext == 'doc':
-		return leerArchivoDoc(archAnalizar)
-	elif ext == 'txt':
-		return leerArchivoTxt(archAnalizar)
-	elif ext == 'xls':
-		#print "Leer archivo excel"
-		return leerArchivoExcel(archAnalizar)
-	else:
-		return ""
+    ext = archAnalizar.split('.')[1]
+    if ext == 'doc':
+        return leerArchivoDoc(archAnalizar)
+    elif ext == 'txt':
+        return leerArchivoTxt(archAnalizar)
+    elif ext == 'xls':
+        #print "Leer archivo excel"
+        return leerArchivoExcel(archAnalizar)
+    else:
+        return ""
 def seleccionarCarpeta(archAnalizar):#(lista_palabras)
-				#print archAnalizar, "este es el arch que analizara"
-				global CARPETAS
-				#print "seleccionar"
-				if CARPETAS.has_key(''):
-					del CARPETAS['']
-				lista = contarRepetidas(leerComo(archAnalizar))
-				#print lista, "estas son las palabras que mas se repitieron"
-				CONT_CARPETAS = {}
-				#print "CARPETAS : ",CARPETAS
-				for m in CARPETAS:
-						CONT_CARPETAS[m] = 0
-				#print "cont_carpetas : ",CONT_CARPETAS
-				for a in CARPETAS:
-						for y in CARPETAS[a]:
-							if isinstance(lista, str) == False:
-								if lista.has_key(y):
-									CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista[y]
-				maxi = 0
-				llave_max = ""
-				for x in CONT_CARPETAS:
-					if CONT_CARPETAS[x] > maxi:
-						maxi = CONT_CARPETAS[x]
-						llave_max = x 
-				#print "Cont_carpetas : ",cont_Carpetas         
-				#print "CARPETAS : ",CARPETAS
-				return llave_max
+                #print archAnalizar, "este es el arch que analizara"
+                global CARPETAS
+                #print "seleccionar"
+                if CARPETAS.has_key(''):
+                    del CARPETAS['']
+                lista = contarRepetidas(leerComo(archAnalizar))
+                #print lista, "estas son las palabras que mas se repitieron"
+                CONT_CARPETAS = {}
+                #print "CARPETAS : ",CARPETAS
+                for m in CARPETAS:
+                        CONT_CARPETAS[m] = 0
+                #print "cont_carpetas : ",CONT_CARPETAS
+                for a in CARPETAS:
+                        for y in CARPETAS[a]:
+                            if isinstance(lista, str) == False:
+                                if lista.has_key(y):
+                                    CONT_CARPETAS[a]= CONT_CARPETAS[a] + lista[y]
+                maxi = 0
+                llave_max = ""
+                for x in CONT_CARPETAS:
+                    if CONT_CARPETAS[x] > maxi:
+                        maxi = CONT_CARPETAS[x]
+                        llave_max = x 
+                #print "Cont_carpetas : ",cont_Carpetas         
+                #print "CARPETAS : ",CARPETAS
+                return llave_max
 
 
 
 ################################*********************************************************################################
                 
 
-## se mandan llamar las funciones necesarias para cambiar de nombre y carpeta a todos los archivos con extensión admitida por el software
+## se mandan llamar las funciones necesarias para cambiar de nombre y carpeta a todos los archivos con extensiï¿½n admitida por el software
 ## Genera el reportre
 def hacer_la_magia():
     global REPORTE
     global carpetaInicio
     listaArchivos = obtenerArchivosCarpetaInicio()
-<<<<<<< .mine
-    #print listaArchivos, 'sdfsgdfgfggfhgh gay el que lolea'
-=======
-    ##print listaArchivos
->>>>>>> .r48
     #print listaArchivos, 'listaarch'
     for x in listaArchivos:
-<<<<<<< .mine
-		#print x, 'archivo'
-=======
-		##print x, 'archivo'
->>>>>>> .r48
-		if x != "" and x != None:
+        ##print x, 'archivo'
+        if x != "" and x != None:
             # print x, "archivo en hacer la magia"
-			ponerTitulo(x)
-			moverACarpeta(x)
+            ponerTitulo(x)
+            moverACarpeta(x)
     REPORTE = REPORTE + 1
     modificarArchivo("reporteEn", "REPORTE = " + str(REPORTE))
 
@@ -545,11 +536,11 @@ def obtenerArchivosCarpetaInicio():
     #print archivosEnDir
     listaArchivos = []
     for archivo in archivosEnDir:
-	try:
-	    ext = archivo[archivo.rfind("."):].lower()
-	    if ext in permitidas:
+        try:
+            ext = archivo[archivo.rfind("."):].lower()
+            if ext in permitidas:
                 listaArchivos.append(carpetaInicio + "\\" +  archivo)
-        except: 
+        except:
             pass    
                        
     return listaArchivos
