@@ -1,4 +1,5 @@
 #Boa:Frame:ventanita
+#test SVN
 
 import wx
 import configuracion
